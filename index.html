@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッドエヴァンスは走るのか — 次走予想サイト</title>
+  <style>
+    :root {
+      --red:    #c0392b;
+      --dark:   #1a1a2e;
+      --mid:    #16213e;
+      --card:   #0f3460;
+      --accent: #e94560;
+      --gold:   #f0c040;
+      --text:   #e0e0e0;
+      --muted:  #9ea8b3;
+      --green:  #27ae60;
+      --yellow: #f39c12;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: linear-gradient(135deg, #1a0000 0%, #3d0000 50%, #1a0000 100%);
+      border-bottom: 3px solid var(--accent);
+      padding: 48px 24px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,.02) 40px,
+        rgba(255,255,255,.02) 80px
+      );
+    }
+    header .subtitle {
+      font-size: .85rem;
+      letter-spacing: .25em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: .05em;
+      color: #fff;
+      text-shadow: 0 0 30px rgba(233,69,96,.6);
+    }
+    header h1 span {
+      color: var(--gold);
+    }
+    header .tagline {
+      margin-top: 12px;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+    .updated {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 14px;
+      background: rgba(255,255,255,.07);
+      border-radius: 20px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    /* ─── LAYOUT ─── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* ─── VERDICT BANNER ─── */
+    .verdict {
+      background: linear-gradient(135deg, #2d0b00, #5a1000);
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .verdict .label {
+      font-size: .8rem;
+      letter-spacing: .3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .verdict .score {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(240,192,64,.5);
+    }
+    .verdict .score-label {
+      font-size: 1.4rem;
+      color: #fff;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+    .verdict .verdict-text {
+      margin-top: 16px;
+      font-size: 1.05rem;
+      color: var(--text);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .meter-wrap {
+      margin: 20px auto 0;
+      max-width: 480px;
+    }
+    .meter-bg {
+      background: rgba(255,255,255,.1);
+      border-radius: 999px;
+      height: 18px;
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      width: 72%;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      border-radius: 999px;
+      animation: fillIn 1.2s ease-out forwards;
+    }
+    @keyframes fillIn {
+      from { width: 0; }
+      to   { width: 72%; }
+    }
+    .meter-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ─── SECTION ─── */
+    section {
+      background: var(--mid);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 28px 26px;
+    }
+    section h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: .1em;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    section h2 .icon {
+      font-size: 1.25rem;
+    }
+
+    /* ─── PROFILE GRID ─── */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .profile-item {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .profile-item .p-label {
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      margin-bottom: 4px;
+    }
+    .profile-item .p-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ─── STATS ROW ─── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-box {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-box .s-val {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+    .stat-box .s-label {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ─── RACE TABLE ─── */
+    .race-table-wrap {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .84rem;
+    }
+    thead tr {
+      background: rgba(255,255,255,.06);
+    }
+    th {
+      text-align: left;
+      padding: 10px 10px;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    td {
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      white-space: nowrap;
+    }
+    tr:hover td { background: rgba(255,255,255,.03); }
+    .rank-1  { color: var(--gold); font-weight: 900; }
+    .rank-2  { color: #c0c0c0; font-weight: 700; }
+    .rank-3  { color: #cd7f32; font-weight: 700; }
+    .rank-bad{ color: var(--muted); }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+    .badge-win   { background: var(--gold);   color: #000; }
+    .badge-place { background: #888;           color: #fff; }
+    .badge-show  { background: #cd7f32;        color: #fff; }
+
+    /* ─── BLOODLINE ─── */
+    .pedigree-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media(max-width: 540px) {
+      .pedigree-box { grid-template-columns: 1fr; }
+    }
+    .ped-card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .ped-card h3 {
+      font-size: .8rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      margin-bottom: 6px;
+    }
+    .ped-card .ped-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .ped-card p {
+      font-size: .82rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .ped-card p strong { color: var(--gold); }
+
+    /* ─── ANALYSIS CARDS ─── */
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .analysis-card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 18px 16px;
+    }
+    .analysis-card h3 {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .analysis-card p {
+      font-size: .84rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .tag-plus  { color: var(--green);  font-weight: 700; }
+    .tag-minus { color: var(--accent); font-weight: 700; }
+    .tag-note  { color: var(--yellow); font-weight: 700; }
+
+    /* ─── PREDICTION BREAKDOWN ─── */
+    .pred-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pred-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .pred-item .p-title {
+      width: 160px;
+      font-size: .88rem;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .pred-bar-bg {
+      flex: 1;
+      background: rgba(255,255,255,.08);
+      border-radius: 999px;
+      height: 12px;
+      overflow: hidden;
+    }
+    .pred-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 1s ease;
+    }
+    .pred-item .p-score {
+      width: 40px;
+      text-align: right;
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* score colors */
+    .c-high   { background: linear-gradient(90deg, #27ae60, #2ecc71); }
+    .c-mid    { background: linear-gradient(90deg, #e67e22, #f39c12); }
+    .c-low    { background: linear-gradient(90deg, #c0392b, #e74c3c); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: .78rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ HEADER ════════════ -->
+<header>
+  <p class="subtitle">Racehorse Prediction</p>
+  <h1>レッドエヴァンスは<span>走るのか</span></h1>
+  <p class="tagline">血統・調教・戦績から読み解く「次走パフォーマンス予測」</p>
+  <span class="updated">最終更新: 2026年3月24日</span>
+</header>
+
+<!-- ════════════ MAIN ════════════ -->
+<main>
+
+  <!-- ── 総合評価バナー ── -->
+  <div class="verdict">
+    <p class="label">総合評価スコア</p>
+    <p class="score">72</p>
+    <p class="score-label">/ 100 &nbsp;— &nbsp;「条件さえ揃えば期待できる」</p>
+    <p class="verdict-text">
+      血統的ポテンシャルは高く、クラスアップのタイミングで本格化の兆しもある。<br>
+      ただし、前走（巌流島S）での斜行・戒告が示すように、コース取りと精神面の不安定さが課題。<br>
+      芝の良〜稍重・マイル以下・小倉以外の会場が揃うレースで好走に期待。
+    </p>
+    <div class="meter-wrap">
+      <div class="meter-bg"><div class="meter-fill"></div></div>
+      <div class="meter-labels"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+    </div>
+  </div>
+
+  <!-- ── プロフィール ── -->
+  <section>
+    <h2><span class="icon">🐴</span>基本プロフィール</h2>
+    <div class="profile-grid">
+      <div class="profile-item">
+        <p class="p-label">馬名</p>
+        <p class="p-value">レッドエヴァンス</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">英名</p>
+        <p class="p-value">Red Evans</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">性齢</p>
+        <p class="p-value">セン馬・5歳</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">毛色</p>
+        <p class="p-value">黒鹿毛</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">生年月日</p>
+        <p class="p-value">2021年5月4日</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">馬体重</p>
+        <p class="p-value">490 kg</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">調教師</p>
+        <p class="p-value">東田明士（栗東）</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">馬主</p>
+        <p class="p-value">東京サラブレッドクラブ</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">生産牧場</p>
+        <p class="p-value">ノーザンファーム</p>
+      </div>
+      <div class="profile-item">
+        <p class="p-label">現在のクラス</p>
+        <p class="p-value">3勝クラス</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 通算成績 ── -->
+  <section>
+    <h2><span class="icon">📊</span>通算成績</h2>
+    <div class="stats-row">
+      <div class="stat-box">
+        <p class="s-val">20</p>
+        <p class="s-label">総出走</p>
+      </div>
+      <div class="stat-box">
+        <p class="s-val">3</p>
+        <p class="s-label">勝利</p>
+      </div>
+      <div class="stat-box">
+        <p class="s-val">15%</p>
+        <p class="s-label">勝率</p>
+      </div>
+      <div class="stat-box">
+        <p class="s-val">25%</p>
+        <p class="s-label">連対率</p>
+      </div>
+      <div class="stat-box">
+        <p class="s-val">55%</p>
+        <p class="s-label">複勝率</p>
+      </div>
+      <div class="stat-box">
+        <p class="s-val">266万</p>
+        <p class="s-label">1走あたり賞金</p>
+      </div>
+    </div>
+    <p style="font-size:.82rem; color:var(--muted);">内訳：3-2-6-2-1-6（1着-2着-3着-4着-5着-着外）</p>
+  </section>
+
+  <!-- ── 主要戦績 ── -->
+  <section>
+    <h2><span class="icon">🏁</span>主要戦績</h2>
+    <div class="race-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>レース名</th>
+            <th>場・距離</th>
+            <th>馬場</th>
+            <th>クラス</th>
+            <th>着順</th>
+            <th>騎手</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026.01.31</td>
+            <td>巌流島ステークス</td>
+            <td>小倉・芝1200m</td>
+            <td>良</td>
+            <td>3勝C（ハンデ）</td>
+            <td class="rank-bad">—</td>
+            <td>斎藤新</td>
+            <td style="color:var(--accent); font-size:.78rem;">直線斜行・戒告</td>
+          </tr>
+          <tr>
+            <td>2025.11.頃</td>
+            <td>佐世保ステークス</td>
+            <td>佐賀・芝</td>
+            <td>—</td>
+            <td>3勝C</td>
+            <td class="rank-3">3着 <span class="badge badge-show">複</span></td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2025.09.頃</td>
+            <td>袖ケ浦特別</td>
+            <td>芝</td>
+            <td>—</td>
+            <td>2勝C</td>
+            <td class="rank-1">1着 <span class="badge badge-win">WIN</span></td>
+            <td>—</td>
+            <td>2勝クラス突破</td>
+          </tr>
+          <tr>
+            <td>2025.03.08</td>
+            <td>4歳以上2勝クラス</td>
+            <td>芝</td>
+            <td>—</td>
+            <td>2勝C</td>
+            <td class="rank-3">3着 <span class="badge badge-show">複</span></td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2025.頃</td>
+            <td>秋吉台特別</td>
+            <td>芝</td>
+            <td>—</td>
+            <td>1勝C</td>
+            <td class="rank-1">1着 <span class="badge badge-win">WIN</span></td>
+            <td>—</td>
+            <td>1勝クラス突破</td>
+          </tr>
+          <tr>
+            <td>2024.頃</td>
+            <td>3歳未勝利</td>
+            <td>芝</td>
+            <td>—</td>
+            <td>未勝利</td>
+            <td class="rank-1">1着 <span class="badge badge-win">WIN</span></td>
+            <td>—</td>
+            <td>初勝利</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px; font-size:.78rem; color:var(--muted);">
+      ※ 詳細タイムは <a href="https://www.keibalab.jp/db/horse/2021105880/" style="color:var(--accent);" target="_blank" rel="noopener">競馬ラボ</a>・<a href="https://en.netkeiba.com/db/horse/2021105880/" style="color:var(--accent);" target="_blank" rel="noopener">netkeiba</a> 参照
+    </p>
+  </section>
+
+  <!-- ── 血統分析 ── -->
+  <section>
+    <h2><span class="icon">🧬</span>血統分析</h2>
+    <div class="pedigree-box">
+      <div class="ped-card">
+        <h3>父</h3>
+        <p class="ped-name">ロードカナロア</p>
+        <p>
+          スプリント〜マイルに抜群のスピードを持つ最強短距離馬。産駒は<strong>芝のマイル以下に強く</strong>、母系次第で中距離もこなす。<br>
+          良馬場での切れ味が武器。<strong>小倉・中山はやや苦手</strong>傾向。<br>
+          母父ディープインパクト系との配合は<strong>最良の組み合わせ</strong>とされる。
+        </p>
+      </div>
+      <div class="ped-card">
+        <h3>母</h3>
+        <p class="ped-name">レッドアヴァンセ</p>
+        <p>
+          20戦4勝。阪神牝馬S（G2）2着、<strong>ヴィクトリアマイル（G1）3着</strong>、富士S（G3）3着。<br>
+          マイル〜中距離の名牝。母父ディープインパクトの<strong>持続的な末脚</strong>をレッドエヴァンスに伝える。
+        </p>
+      </div>
+      <div class="ped-card">
+        <h3>母父</h3>
+        <p class="ped-name">ディープインパクト</p>
+        <p>
+          日本競馬史上最高の種牡馬。<strong>上がりの切れと長距離適性</strong>を付与。<br>
+          ロードカナロアとの組み合わせで、スピード×スタミナのバランス型産駒が生まれやすい。
+        </p>
+      </div>
+      <div class="ped-card">
+        <h3>インブリード</h3>
+        <p class="ped-name">Lyphard 5×4 / Northern Dancer 5×5</p>
+        <p>
+          Lyphardのインクロスにより<strong>芝での柔軟性と器用さ</strong>が強化。<br>
+          Northern Dancerのクロスは<strong>瞬発力と根性</strong>を上積み。<br>
+          全体的に<strong>良血の配合</strong>であり、ノーザンファーム生産の丁寧な仕上げも後押し。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 調教・状態分析 ── -->
+  <section>
+    <h2><span class="icon">🏋️</span>調教・状態分析</h2>
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <h3>⚠️ 前走の課題</h3>
+        <p>
+          2026年1月31日の巌流島S（小倉・芝1200m）では直線で外側に斜行し、
+          騎手（斎藤新）が<span class="tag-minus">戒告</span>を受けた。<br><br>
+          斜行はレース中の集中力の欠如か、馬体の疲労が影響した可能性がある。
+          次走に向けて精神面・体調の立て直しが重要。
+        </p>
+      </div>
+      <div class="analysis-card">
+        <h3>✅ 成長曲線</h3>
+        <p>
+          ロードカナロア産駒は<span class="tag-note">晩成傾向</span>が顕著。
+          3歳夏〜秋に本格化するパターンが多く、レッドエヴァンスも
+          2勝→3勝クラスへ順調に進んでいる。<br><br>
+          5歳のこのタイミングが<span class="tag-plus">最充実期</span>に差し掛かる可能性が高い。
+        </p>
+      </div>
+      <div class="analysis-card">
+        <h3>📐 ベスト条件</h3>
+        <p>
+          父の傾向から<span class="tag-plus">芝・良〜稍重・1200〜1600m</span>が最適。<br>
+          母の実績からマイルでの末脚発揮に期待大。<br><br>
+          <span class="tag-minus">小倉は父産駒の苦手コース</span>。前走の巌流島S（小倉）は環境的にも向かなかった可能性がある。
+        </p>
+      </div>
+      <div class="analysis-card">
+        <h3>🔄 間隔と疲労</h3>
+        <p>
+          ロードカナロア産駒は<span class="tag-plus">中4週以上の間隔</span>を空けると好走しやすい傾向がある。<br><br>
+          前走から十分な間隔を置いてのローテーションが組まれているなら<span class="tag-plus">プラス評価</span>。
+          詰まったローテは<span class="tag-minus">マイナス</span>に働く可能性あり。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 次走予測スコア内訳 ── -->
+  <section>
+    <h2><span class="icon">🔮</span>次走予測スコア内訳</h2>
+    <div class="pred-list">
+      <div class="pred-item">
+        <p class="p-title">血統ポテンシャル</p>
+        <div class="pred-bar-bg">
+          <div class="pred-bar-fill c-high" style="width:88%"></div>
+        </div>
+        <p class="p-score">88</p>
+      </div>
+      <div class="pred-item">
+        <p class="p-title">クラス適応度</p>
+        <div class="pred-bar-bg">
+          <div class="pred-bar-fill c-mid" style="width:65%"></div>
+        </div>
+        <p class="p-score">65</p>
+      </div>
+      <div class="pred-item">
+        <p class="p-title">コース・距離適性</p>
+        <div class="pred-bar-bg">
+          <div class="pred-bar-fill c-mid" style="width:70%"></div>
+        </div>
+        <p class="p_score" style="width:40px; text-align:right; font-size:.88rem; font-weight:700; color:var(--gold);">70</p>
+      </div>
+      <div class="pred-item">
+        <p class="p-title">精神面の安定度</p>
+        <div class="pred-bar-bg">
+          <div class="pred-bar-fill c-low" style="width:50%"></div>
+        </div>
+        <p class="p-score">50</p>
+      </div>
+      <div class="pred-item">
+        <p class="p-title">成長段階</p>
+        <div class="pred-bar-bg">
+          <div class="pred-bar-fill c-high" style="width:80%"></div>
+        </div>
+        <p class="p-score">80</p>
+      </div>
+      <div class="pred-item">
+        <p class="p-title">調教・仕上がり</p>
+        <div class="pred-bar-bg">
+          <div class="pred-bar-fill c-mid" style="width:68%"></div>
+        </div>
+        <p class="p-score">68</p>
+      </div>
+    </div>
+
+    <div style="margin-top:28px; padding:20px; background:var(--card); border-radius:10px;">
+      <h3 style="color:var(--gold); font-size:.95rem; margin-bottom:12px;">総合判定</h3>
+      <p style="font-size:.9rem; line-height:1.8;">
+        レッドエヴァンスは<strong>血統面の素質は折り紙付き</strong>で、父ロードカナロア×母レッドアヴァンセ（G1・3着）×母父ディープインパクトという組み合わせはトップクラス。<br><br>
+        課題は前走の斜行・戒告に象徴される<strong>精神面の不安定さ</strong>。騎手が手綱を引けない状況が生まれると実力を発揮しきれない。<br><br>
+        <strong>好走条件：</strong>
+        芝の良〜稍重・マイル前後・小倉以外の開催（東京・中京・京都外回り）・中4週以上の間隔・開幕週の高速馬場。<br><br>
+        条件が揃えば<strong>3勝クラスを突破してオープン・重賞圏内も視野</strong>に入る馬。ファンならぜひ次走の出走条件に注目してほしい。
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <p>データ参照: <a href="https://www.keibalab.jp/db/horse/2021105880/" target="_blank" rel="noopener">競馬ラボ</a> / <a href="https://en.netkeiba.com/db/horse/2021105880/" target="_blank" rel="noopener">netkeiba</a> / <a href="https://www.umadb.com/uma/au33245/" target="_blank" rel="noopener">一口馬主DB</a></p>
+  <p style="margin-top:6px;">本サイトは競馬ファンによる情報まとめサイトです。馬券の購入は自己責任でお願いします。</p>
+</footer>
+
+</body>
+</html>
