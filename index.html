@@ -181,22 +181,28 @@
     /* ─── PROFILE GRID ─── */
     .profile-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 12px;
-    }
-    .profile-item {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0;
       background: var(--card);
       border-radius: 10px;
-      padding: 14px 16px;
+      overflow: hidden;
+    }
+    .profile-item {
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      border-right: 1px solid rgba(255,255,255,.05);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
     }
     .profile-item .p-label {
-      font-size: .72rem;
+      font-size: .7rem;
       color: var(--muted);
-      letter-spacing: .1em;
-      margin-bottom: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .profile-item .p-value {
-      font-size: 1rem;
+      font-size: .88rem;
       font-weight: 700;
       color: #fff;
     }
@@ -204,25 +210,25 @@
     /* ─── STATS ROW ─── */
     .stats-row {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
     }
     .stat-box {
       background: var(--card);
-      border-radius: 10px;
-      padding: 14px 12px;
+      border-radius: 8px;
+      padding: 8px 10px;
       text-align: center;
     }
     .stat-box .s-val {
-      font-size: 1.6rem;
+      font-size: 1.25rem;
       font-weight: 900;
       color: var(--gold);
     }
     .stat-box .s-label {
-      font-size: .72rem;
+      font-size: .68rem;
       color: var(--muted);
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     /* ─── RACE TABLE ─── */
@@ -239,14 +245,14 @@
     }
     th {
       text-align: left;
-      padding: 10px 10px;
+      padding: 7px 8px;
       color: var(--muted);
       font-weight: 600;
       white-space: nowrap;
       border-bottom: 1px solid rgba(255,255,255,.1);
     }
     td {
-      padding: 10px 10px;
+      padding: 7px 8px;
       border-bottom: 1px solid rgba(255,255,255,.05);
       white-space: nowrap;
     }
@@ -639,36 +645,22 @@
       <div class="ped-card">
         <h3>父</h3>
         <p class="ped-name">ロードカナロア</p>
-        <p>
-          スプリント〜マイルに抜群のスピードを持つ最強短距離馬。産駒は<strong>芝のマイル以下に強く</strong>、母系次第で中距離もこなす。<br>
-          良馬場での切れ味が武器。<strong>小倉・中山はやや苦手</strong>傾向。<br>
-          母父ディープインパクト系との配合は<strong>最良の組み合わせ</strong>とされる。
-        </p>
+        <p>芝マイル以下に強い最強短距離馬。<strong>良馬場の切れ味</strong>が武器で、母父ディープ系との組み合わせは<strong>最良配合</strong>とされる。</p>
       </div>
       <div class="ped-card">
         <h3>母</h3>
         <p class="ped-name">レッドアヴァンセ</p>
-        <p>
-          20戦4勝。阪神牝馬S（G2）2着、<strong>ヴィクトリアマイル（G1）3着</strong>、富士S（G3）3着。<br>
-          マイル〜中距離の名牝。母父ディープインパクトの<strong>持続的な末脚</strong>をレッドエヴァンスに伝える。
-        </p>
+        <p>阪神牝馬S2着・<strong>ヴィクトリアマイルG1 3着</strong>の名牝。母父ディープの<strong>持続的な末脚</strong>を伝える。</p>
       </div>
       <div class="ped-card">
         <h3>母父</h3>
         <p class="ped-name">ディープインパクト</p>
-        <p>
-          日本競馬史上最高の種牡馬。<strong>上がりの切れと長距離適性</strong>を付与。<br>
-          ロードカナロアとの組み合わせで、スピード×スタミナのバランス型産駒が生まれやすい。
-        </p>
+        <p>ロードカナロアとの組み合わせで<strong>スピード×持続力</strong>のバランス型。上がりの切れを付与。</p>
       </div>
       <div class="ped-card">
         <h3>インブリード</h3>
         <p class="ped-name">Lyphard 5×4 / Northern Dancer 5×5</p>
-        <p>
-          Lyphardのインクロスにより<strong>芝での柔軟性と器用さ</strong>が強化。<br>
-          Northern Dancerのクロスは<strong>瞬発力と根性</strong>を上積み。<br>
-          全体的に<strong>良血の配合</strong>であり、ノーザンファーム生産の丁寧な仕上げも後押し。
-        </p>
+        <p><strong>芝での器用さ・瞬発力・根性</strong>を強化するクロス。ノーザンファーム生産の丁寧な仕上げも加わる。</p>
       </div>
     </div>
   </section>
@@ -717,65 +709,6 @@
     </div>
   </section>
 
-  <!-- ── 次走予測スコア内訳 ── -->
-  <section>
-    <h2><span class="icon">🔮</span>次走予測スコア内訳</h2>
-    <div class="pred-list">
-      <div class="pred-item">
-        <p class="p-title">血統ポテンシャル</p>
-        <div class="pred-bar-bg">
-          <div class="pred-bar-fill c-high" style="width:88%"></div>
-        </div>
-        <p class="p-score">88</p>
-      </div>
-      <div class="pred-item">
-        <p class="p-title">クラス適応度</p>
-        <div class="pred-bar-bg">
-          <div class="pred-bar-fill c-mid" style="width:65%"></div>
-        </div>
-        <p class="p-score">65</p>
-      </div>
-      <div class="pred-item">
-        <p class="p-title">コース・距離適性</p>
-        <div class="pred-bar-bg">
-          <div class="pred-bar-fill c-mid" style="width:70%"></div>
-        </div>
-        <p class="p_score" style="width:40px; text-align:right; font-size:.88rem; font-weight:700; color:var(--gold);">70</p>
-      </div>
-      <div class="pred-item">
-        <p class="p-title">精神面の安定度</p>
-        <div class="pred-bar-bg">
-          <div class="pred-bar-fill c-low" style="width:50%"></div>
-        </div>
-        <p class="p-score">50</p>
-      </div>
-      <div class="pred-item">
-        <p class="p-title">成長段階</p>
-        <div class="pred-bar-bg">
-          <div class="pred-bar-fill c-high" style="width:80%"></div>
-        </div>
-        <p class="p-score">80</p>
-      </div>
-      <div class="pred-item">
-        <p class="p-title">調教・仕上がり</p>
-        <div class="pred-bar-bg">
-          <div class="pred-bar-fill c-mid" style="width:68%"></div>
-        </div>
-        <p class="p-score">68</p>
-      </div>
-    </div>
-
-    <div style="margin-top:28px; padding:20px; background:var(--card); border-radius:10px;">
-      <h3 style="color:var(--gold); font-size:.95rem; margin-bottom:12px;">総合判定</h3>
-      <p style="font-size:.9rem; line-height:1.8;">
-        レッドエヴァンスは<strong>血統面の素質は折り紙付き</strong>で、父ロードカナロア×母レッドアヴァンセ（G1・3着）×母父ディープインパクトという組み合わせはトップクラス。2025年春はモレイラ騎手との袖ケ浦特別で<strong>1:07.2の好時計</strong>を叩き出した。<br><br>
-        ただし3勝クラス昇格後は苦戦が続く。<strong>道頓堀S（1番人気9着）・北陸S（6着）・巌流島S（直線斜行・戒告）</strong>と精神面・コース不向きが課題として浮上している。<br><br>
-        <strong>好走条件：</strong>
-        芝・良〜稍重・1200m・中山/京都/東京・中4週以上の間隔・開幕週の速い馬場。<strong>小倉は明確に苦手</strong>なため小倉開催は割引き評価。<br><br>
-        条件が揃えば<strong>3勝クラス突破→オープン・重賞圏も視野</strong>。次走の開催場所と騎手起用が鍵になる。
-      </p>
-    </div>
-  </section>
 
   <!-- ── 対戦馬追跡調査 ── -->
   <section>
@@ -910,11 +843,6 @@
         <p style="font-size:.75rem; color:var(--muted); letter-spacing:.1em; margin-bottom:4px;">次走レース</p>
         <p style="font-size:1.25rem; font-weight:900; color:#fff;">朱雀ステークス</p>
         <p style="font-size:.85rem; color:var(--muted); margin-top:2px;">京都競馬場 / 芝1200m（右外回り・Aコース） / 4歳以上3勝クラス・定量</p>
-      </div>
-      <div style="text-align:center;">
-        <p style="font-size:.72rem; color:var(--muted); margin-bottom:4px;">次走予想スコア</p>
-        <p style="font-size:2.8rem; font-weight:900; color:var(--gold); line-height:1; text-shadow:0 0 20px rgba(240,192,64,.4);">78</p>
-        <p style="font-size:.8rem; color:#fff; font-weight:700;">/ 100</p>
       </div>
     </div>
 
