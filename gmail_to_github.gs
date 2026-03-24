@@ -24,7 +24,7 @@ const CONFIG = {
   GITHUB_BRANCH: "main",                   // ← ブランチ名
 
   // Gmail フィルタ
-  GMAIL_QUERY: "from:@tokyo-tc.com",        // ← 送信元フィルタ
+  GMAIL_QUERY: 'from:@tokyo-tc.com subject:"TTC所属馬近況情報：レッドエヴァンス"',
 
   // 処理済みラベル（自動作成）
   PROCESSED_LABEL: "github-saved",
