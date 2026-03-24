@@ -145,7 +145,7 @@
     }
     @keyframes fillIn {
       from { width: 0; }
-      to   { width: 72%; }
+      to   { width: 65%; }
     }
     .meter-labels {
       display: flex;
@@ -397,15 +397,15 @@
   <!-- ── 総合評価バナー ── -->
   <div class="verdict">
     <p class="label">総合評価スコア</p>
-    <p class="score">72</p>
-    <p class="score-label">/ 100 &nbsp;— &nbsp;「条件さえ揃えば期待できる」</p>
+    <p class="score">65</p>
+    <p class="score-label">/ 100 &nbsp;— &nbsp;「立て直しが鍵、好条件なら巻き返せる」</p>
     <p class="verdict-text">
-      血統的ポテンシャルは高く、クラスアップのタイミングで本格化の兆しもある。<br>
-      ただし、前走（巌流島S）での斜行・戒告が示すように、コース取りと精神面の不安定さが課題。<br>
-      芝の良〜稍重・マイル以下・小倉以外の会場が揃うレースで好走に期待。
+      2025年春の連勝（秋吉台・袖ケ浦）で素質の高さを示したが、3勝クラス昇格後は道頓堀S（1人気9着）・北陸S（6着）と苦戦が続く。<br>
+      巌流島S（2026年1月）は入線3着も直線斜行・騎手戒告と精神面の課題が再浮上。<br>
+      <strong>小倉以外・中山/京都・中4週以上の間隔・良〜稍重</strong>の好条件が揃えば巻き返しに期待できる。
     </p>
     <div class="meter-wrap">
-      <div class="meter-bg"><div class="meter-fill"></div></div>
+      <div class="meter-bg"><div class="meter-fill" style="width:65%;"></div></div>
       <div class="meter-labels"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
     </div>
   </div>
@@ -478,20 +478,24 @@
         <p class="s-label">連対率</p>
       </div>
       <div class="stat-box">
-        <p class="s-val">55%</p>
+        <p class="s-val">60%</p>
         <p class="s-label">複勝率</p>
       </div>
       <div class="stat-box">
         <p class="s-val">266万</p>
         <p class="s-label">1走あたり賞金</p>
       </div>
+      <div class="stat-box">
+        <p class="s-val">5,318万</p>
+        <p class="s-label">総賞金</p>
+      </div>
     </div>
-    <p style="font-size:.82rem; color:var(--muted);">内訳：3-2-6-2-1-6（1着-2着-3着-4着-5着-着外）</p>
+    <p style="font-size:.82rem; color:var(--muted);">内訳：3-2-7-2-0-6（1着-2着-3着-4着-5着-着外）/ 平均人気：2.8番人気</p>
   </section>
 
   <!-- ── 主要戦績 ── -->
   <section>
-    <h2><span class="icon">🏁</span>主要戦績</h2>
+    <h2><span class="icon">🏁</span>主要戦績（近走〜全勝利）</h2>
     <div class="race-table-wrap">
       <table>
         <thead>
@@ -502,76 +506,129 @@
             <th>馬場</th>
             <th>クラス</th>
             <th>着順</th>
+            <th>タイム</th>
             <th>騎手</th>
+            <th>人気</th>
             <th>備考</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr style="background:rgba(233,69,96,.08);">
             <td>2026.01.31</td>
             <td>巌流島ステークス</td>
             <td>小倉・芝1200m</td>
             <td>良</td>
             <td>3勝C（ハンデ）</td>
-            <td class="rank-bad">—</td>
-            <td>斎藤新</td>
-            <td style="color:var(--accent); font-size:.78rem;">直線斜行・戒告</td>
-          </tr>
-          <tr>
-            <td>2025.11.頃</td>
-            <td>佐世保ステークス</td>
-            <td>佐賀・芝</td>
-            <td>—</td>
-            <td>3勝C</td>
             <td class="rank-3">3着 <span class="badge badge-show">複</span></td>
             <td>—</td>
+            <td>斎藤新</td>
+            <td>2人気</td>
+            <td style="color:var(--accent); font-size:.78rem;">直線斜行・騎手戒告</td>
+          </tr>
+          <tr>
+            <td>2025.10.18</td>
+            <td>北陸ステークス</td>
+            <td>新潟・芝1200m</td>
+            <td>良</td>
+            <td>3勝C（ハンデ）</td>
+            <td class="rank-bad">6着</td>
+            <td>1:08.9</td>
+            <td>西塚洸二</td>
+            <td>8人気</td>
             <td></td>
           </tr>
           <tr>
-            <td>2025.09.頃</td>
+            <td>2025.09.27</td>
+            <td>道頓堀ステークス</td>
+            <td>阪神・芝1200m</td>
+            <td>良</td>
+            <td>3勝C</td>
+            <td class="rank-bad">9着</td>
+            <td>1:08.8</td>
+            <td>J.モレイラ</td>
+            <td>1人気</td>
+            <td style="color:var(--accent); font-size:.78rem;">1番人気で大敗</td>
+          </tr>
+          <tr>
+            <td>2025.06.29</td>
+            <td>佐世保ステークス</td>
+            <td>小倉・芝1200m</td>
+            <td>良</td>
+            <td>3勝C</td>
+            <td class="rank-3">3着 <span class="badge badge-show">複</span></td>
+            <td>1:08.1</td>
+            <td>松山弘平</td>
+            <td>1人気</td>
+            <td>勝ち馬：ヤマニンアンフィル</td>
+          </tr>
+          <tr style="background:rgba(39,174,96,.06);">
+            <td>2025.04.19</td>
             <td>袖ケ浦特別</td>
-            <td>芝</td>
-            <td>—</td>
+            <td>中山・芝1200m</td>
+            <td>良</td>
             <td>2勝C</td>
             <td class="rank-1">1着 <span class="badge badge-win">WIN</span></td>
-            <td>—</td>
-            <td>2勝クラス突破</td>
+            <td>1:07.2</td>
+            <td>J.モレイラ</td>
+            <td>1人気</td>
+            <td style="color:var(--green);">2勝クラス突破</td>
           </tr>
           <tr>
             <td>2025.03.08</td>
             <td>4歳以上2勝クラス</td>
-            <td>芝</td>
-            <td>—</td>
+            <td>阪神・芝1200m</td>
+            <td>良</td>
             <td>2勝C</td>
             <td class="rank-3">3着 <span class="badge badge-show">複</span></td>
+            <td>1:08.9</td>
+            <td>松山弘平</td>
             <td>—</td>
             <td></td>
           </tr>
-          <tr>
-            <td>2025.頃</td>
+          <tr style="background:rgba(39,174,96,.06);">
+            <td>2025.02.22</td>
             <td>秋吉台特別</td>
-            <td>芝</td>
-            <td>—</td>
+            <td>小倉・芝1200m</td>
+            <td>良</td>
             <td>1勝C</td>
             <td class="rank-1">1着 <span class="badge badge-win">WIN</span></td>
+            <td>1:08.3</td>
+            <td>荻野極</td>
             <td>—</td>
-            <td>1勝クラス突破</td>
+            <td style="color:var(--green);">1勝クラス突破</td>
           </tr>
           <tr>
-            <td>2024.頃</td>
+            <td>2024.06.02</td>
+            <td>祇園特別</td>
+            <td>京都・芝1200m</td>
+            <td>良</td>
+            <td>1勝C</td>
+            <td class="rank-2">2着 <span class="badge badge-place">複</span></td>
+            <td>1:07.7</td>
+            <td>藤岡佑介</td>
+            <td>—</td>
+            <td></td>
+          </tr>
+          <tr style="background:rgba(39,174,96,.06);">
+            <td>2024年</td>
             <td>3歳未勝利</td>
-            <td>芝</td>
+            <td>芝・短距離</td>
             <td>—</td>
             <td>未勝利</td>
             <td class="rank-1">1着 <span class="badge badge-win">WIN</span></td>
             <td>—</td>
-            <td>初勝利</td>
+            <td>—</td>
+            <td>—</td>
+            <td style="color:var(--green);">初勝利（3歳）</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p style="margin-top:12px; font-size:.78rem; color:var(--muted);">
-      ※ 詳細タイムは <a href="https://www.keibalab.jp/db/horse/2021105880/" style="color:var(--accent);" target="_blank" rel="noopener">競馬ラボ</a>・<a href="https://en.netkeiba.com/db/horse/2021105880/" style="color:var(--accent);" target="_blank" rel="noopener">netkeiba</a> 参照
+      ※ 2024年通算：13戦1勝2着2回3着4回（賞金1,827万円）　詳細は
+      <a href="https://www.keibalab.jp/db/horse/2021105880/" style="color:var(--accent);" target="_blank" rel="noopener">競馬ラボ</a>・
+      <a href="https://en.netkeiba.com/db/horse/2021105880/" style="color:var(--accent);" target="_blank" rel="noopener">netkeiba</a>・
+      <a href="https://www.umadb.com/uma/au33245/" style="color:var(--accent);" target="_blank" rel="noopener">一口馬主DB</a> 参照
     </p>
   </section>
 
@@ -621,37 +678,40 @@
     <h2><span class="icon">🏋️</span>調教・状態分析</h2>
     <div class="analysis-grid">
       <div class="analysis-card">
-        <h3>⚠️ 前走の課題</h3>
+        <h3>⚠️ 2025年秋以降の大敗</h3>
         <p>
-          2026年1月31日の巌流島S（小倉・芝1200m）では直線で外側に斜行し、
-          騎手（斎藤新）が<span class="tag-minus">戒告</span>を受けた。<br><br>
-          斜行はレース中の集中力の欠如か、馬体の疲労が影響した可能性がある。
-          次走に向けて精神面・体調の立て直しが重要。
+          <span class="tag-minus">道頓堀S（阪神9月・1人気9着）</span>・<span class="tag-minus">北陸S（新潟10月・8人気6着）</span>と
+          3勝クラスで連続大敗。2026年1月の巌流島S（小倉）では直線で外側に斜行し騎手（斎藤新）が
+          <span class="tag-minus">戒告</span>を受けた（入線3着）。<br><br>
+          3勝クラスの壁に苦しんでいる段階。精神面の不安定さと
+          夏〜秋競馬での疲労蓄積が影響していると考えられる。
         </p>
       </div>
       <div class="analysis-card">
-        <h3>✅ 成長曲線</h3>
+        <h3>✅ 本格化への期待</h3>
         <p>
-          ロードカナロア産駒は<span class="tag-note">晩成傾向</span>が顕著。
-          3歳夏〜秋に本格化するパターンが多く、レッドエヴァンスも
-          2勝→3勝クラスへ順調に進んでいる。<br><br>
-          5歳のこのタイミングが<span class="tag-plus">最充実期</span>に差し掛かる可能性が高い。
+          2025年春は<span class="tag-plus">秋吉台特別（1勝C 1着）→袖ケ浦特別（2勝C 1着）</span>と
+          連勝でクラスを上げてきた。J.モレイラ騎手騎乗時の袖ケ浦特別では1:07.2の高時計。<br><br>
+          ロードカナロア産駒は<span class="tag-note">晩成型</span>も多く、5歳の今が
+          <span class="tag-plus">充実期</span>に差し掛かる可能性は十分ある。冬場の立て直し後に注目。
         </p>
       </div>
       <div class="analysis-card">
         <h3>📐 ベスト条件</h3>
         <p>
-          父の傾向から<span class="tag-plus">芝・良〜稍重・1200〜1600m</span>が最適。<br>
-          母の実績からマイルでの末脚発揮に期待大。<br><br>
-          <span class="tag-minus">小倉は父産駒の苦手コース</span>。前走の巌流島S（小倉）は環境的にも向かなかった可能性がある。
+          成績データから<span class="tag-plus">芝・良〜稍重・1200m・中山/京都</span>が好走パターン。
+          袖ケ浦特別（中山）では1:07.2の好時計、祇園特別（京都）でも2着と実績あり。<br><br>
+          <span class="tag-minus">小倉はロードカナロア産駒の苦手コース</span>で、巌流島S・秋吉台特別・佐世保Sとも
+          小倉での結果が振るわない（斜行、3着止まりが続く）。
         </p>
       </div>
       <div class="analysis-card">
-        <h3>🔄 間隔と疲労</h3>
+        <h3>🔄 騎手・間隔の影響</h3>
         <p>
-          ロードカナロア産駒は<span class="tag-plus">中4週以上の間隔</span>を空けると好走しやすい傾向がある。<br><br>
-          前走から十分な間隔を置いてのローテーションが組まれているなら<span class="tag-plus">プラス評価</span>。
-          詰まったローテは<span class="tag-minus">マイナス</span>に働く可能性あり。
+          <span class="tag-plus">J.モレイラ騎乗時</span>の袖ケ浦特別（1着）・道頓堀S（9着）で
+          成績が大きく分かれており、コース・調子との相性も影響が大きい。<br><br>
+          ロードカナロア産駒は<span class="tag-plus">中4週以上の間隔</span>を空けると好走しやすい傾向がある。
+          連戦よりも間隔を置いたローテーションが望ましい。
         </p>
       </div>
     </div>
@@ -708,11 +768,11 @@
     <div style="margin-top:28px; padding:20px; background:var(--card); border-radius:10px;">
       <h3 style="color:var(--gold); font-size:.95rem; margin-bottom:12px;">総合判定</h3>
       <p style="font-size:.9rem; line-height:1.8;">
-        レッドエヴァンスは<strong>血統面の素質は折り紙付き</strong>で、父ロードカナロア×母レッドアヴァンセ（G1・3着）×母父ディープインパクトという組み合わせはトップクラス。<br><br>
-        課題は前走の斜行・戒告に象徴される<strong>精神面の不安定さ</strong>。騎手が手綱を引けない状況が生まれると実力を発揮しきれない。<br><br>
+        レッドエヴァンスは<strong>血統面の素質は折り紙付き</strong>で、父ロードカナロア×母レッドアヴァンセ（G1・3着）×母父ディープインパクトという組み合わせはトップクラス。2025年春はモレイラ騎手との袖ケ浦特別で<strong>1:07.2の好時計</strong>を叩き出した。<br><br>
+        ただし3勝クラス昇格後は苦戦が続く。<strong>道頓堀S（1番人気9着）・北陸S（6着）・巌流島S（直線斜行・戒告）</strong>と精神面・コース不向きが課題として浮上している。<br><br>
         <strong>好走条件：</strong>
-        芝の良〜稍重・マイル前後・小倉以外の開催（東京・中京・京都外回り）・中4週以上の間隔・開幕週の高速馬場。<br><br>
-        条件が揃えば<strong>3勝クラスを突破してオープン・重賞圏内も視野</strong>に入る馬。ファンならぜひ次走の出走条件に注目してほしい。
+        芝・良〜稍重・1200m・中山/京都/東京・中4週以上の間隔・開幕週の速い馬場。<strong>小倉は明確に苦手</strong>なため小倉開催は割引き評価。<br><br>
+        条件が揃えば<strong>3勝クラス突破→オープン・重賞圏も視野</strong>。次走の開催場所と騎手起用が鍵になる。
       </p>
     </div>
   </section>
