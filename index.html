@@ -376,6 +376,42 @@
     .c-mid    { background: linear-gradient(90deg, #e67e22, #f39c12); }
     .c-low    { background: linear-gradient(90deg, #c0392b, #e74c3c); }
 
+    /* ─── TABS ─── */
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      background: var(--mid);
+      border-bottom: 2px solid rgba(255,255,255,.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 14px 22px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .2s, border-color .2s;
+      font-family: inherit;
+      letter-spacing: .05em;
+      margin-bottom: -2px;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: flex; flex-direction: column; gap: 40px; }
+
     /* ─── FOOTER ─── */
     footer {
       text-align: center;
@@ -397,8 +433,19 @@
   <span class="updated">最終更新: 2026年3月24日</span>
 </header>
 
+<!-- ════════════ TAB NAV ════════════ -->
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="overview">📋 概要</button>
+  <button class="tab-btn" data-tab="records">🏁 戦績</button>
+  <button class="tab-btn" data-tab="analysis">🔍 分析</button>
+  <button class="tab-btn" data-tab="prediction">🎯 次走予想</button>
+</nav>
+
 <!-- ════════════ MAIN ════════════ -->
 <main>
+
+  <!-- ── 概要タブ ── -->
+  <div class="tab-panel active" id="tab-overview">
 
   <!-- ── 総合評価バナー ── -->
   <div class="verdict">
@@ -477,6 +524,11 @@
       <span style="font-size:.82rem; color:#ccc;">総賞金 <strong style="color:var(--gold);">5,318万円</strong></span>
     </div>
   </section>
+
+  </div><!-- /tab-overview -->
+
+  <!-- ── 戦績タブ ── -->
+  <div class="tab-panel" id="tab-records">
 
   <!-- ── 主要戦績 ── -->
   <section>
@@ -566,6 +618,11 @@
       <a href="https://en.netkeiba.com/db/horse/2021105880/" style="color:var(--accent);" target="_blank" rel="noopener">netkeiba</a>
     </p>
   </section>
+
+  </div><!-- /tab-records -->
+
+  <!-- ── 分析タブ ── -->
+  <div class="tab-panel" id="tab-analysis">
 
   <!-- ── 血統分析 ── -->
   <section>
@@ -753,6 +810,11 @@
     </div>
   </section>
 
+  </div><!-- /tab-analysis -->
+
+  <!-- ── 次走予想タブ ── -->
+  <div class="tab-panel" id="tab-prediction">
+
   <!-- ── 次走予想：朱雀S ── -->
   <section style="border:2px solid var(--gold);">
     <h2><span class="icon">🎯</span>次走予想：朱雀ステークス（京都・芝1200m）</h2>
@@ -938,6 +1000,8 @@
     </div>
   </section>
 
+  </div><!-- /tab-prediction -->
+
 </main>
 
 <!-- ════════════ FOOTER ════════════ -->
@@ -946,5 +1010,17 @@
   <p style="margin-top:6px;">本サイトは競馬ファンによる情報まとめサイトです。馬券の購入は自己責任でお願いします。</p>
 </footer>
 
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + target).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
 </body>
 </html>
