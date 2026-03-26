@@ -675,6 +675,47 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: flex; flex-direction: column; gap: 20px; }
 
+    /* ── ライバルテーブル ── */
+    .rivals-table-wrap { overflow-x: auto; }
+    .rivals-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .82rem;
+      min-width: 480px;
+    }
+    .rivals-table thead th {
+      background: var(--navy);
+      color: #fff;
+      padding: 7px 10px;
+      text-align: left;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .rivals-table tbody tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .rivals-table tbody tr:nth-child(even) { background: var(--surface2); }
+    .rivals-table tbody tr:hover { background: #f5f0ea; }
+    .rivals-table td { padding: 8px 10px; vertical-align: middle; }
+    .rivals-table .horse-name { font-weight: 700; }
+    .evans-row { background: #fff8f0 !important; }
+    .rank { font-weight: 900; white-space: nowrap; text-align: center; }
+    .rank-1 { color: var(--gold); }
+    .rank-2 { color: var(--text-sub); }
+    .rank-3 { color: #8b5a2b; }
+    .rival-badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+    .badge-promoted { background: #e8f4e8; border: 1px solid #7cb87c; color: #2a6a2a; }
+    .badge-active   { background: #fff3e0; border: 1px solid #e6a020; color: #7a4800; }
+    .badge-retired  { background: #fce8e8; border: 1px solid #cc6666; color: #880000; }
+    .badge-self     { background: #e8eef8; border: 1px solid #6688cc; color: #224488; }
+
     /* ─── HEADER IMAGE ─── */
     .header-photo-wrap {
       position: relative;
@@ -1291,6 +1332,7 @@
   <button class="tab-btn" data-tab="prediction">🎯 予想</button>
   <button class="tab-btn" data-tab="photos">🖼 馬体</button>
   <button class="tab-btn" data-tab="comments">💬 コメント</button>
+  <button class="tab-btn" data-tab="rivals">⚔️ ライバル</button>
 </nav>
 
 <!-- ════════════ MAIN ════════════ -->
@@ -2932,6 +2974,242 @@
   </section>
 
   </div><!-- /tab-comments -->
+
+  <!-- ── ライバルタブ ── -->
+  <div class="tab-panel" id="tab-rivals">
+
+  <section>
+    <h2><span class="icon">⚔️</span>3勝クラス 短距離ライバル馬</h2>
+    <p style="padding:0 0 12px; color:var(--text-sub); font-size:.85rem;">
+      現在の3勝クラス（旧1,600万下）で芝1000m・1200m・1400mを主戦場にしている馬たちのリスト。
+      レッドエヴァンスと同じ土俵で戦う、または戦う可能性のある競合馬をまとめています。
+    </p>
+
+    <!-- 凡例 -->
+    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; font-size:.75rem;">
+      <span style="background:#e8f4e8; border:1px solid #7cb87c; color:#2a6a2a; padding:2px 8px; border-radius:10px;">▲ 昇格済み</span>
+      <span style="background:#fff3e0; border:1px solid #e6a020; color:#7a4800; padding:2px 8px; border-radius:10px;">● 現3勝クラス</span>
+      <span style="background:#fce8e8; border:1px solid #cc6666; color:#880000; padding:2px 8px; border-radius:10px;">✕ 抹消・引退</span>
+      <span style="background:#e8eef8; border:1px solid #6688cc; color:#224488; padding:2px 8px; border-radius:10px;">★ エヴァンス</span>
+    </div>
+
+    <!-- ═══ 芝1200m ═══ -->
+    <h3 style="font-size:.95rem; font-weight:800; color:var(--navy); border-left:4px solid var(--primary); padding-left:10px; margin-bottom:10px;">
+      芝1200m — 3勝クラス
+    </h3>
+
+    <!-- アクアマリンS 2026 -->
+    <div style="margin-bottom:20px;">
+      <p style="font-size:.78rem; color:var(--muted); margin-bottom:6px;">
+        📍 アクアマリンS（中山・芝1200m）2026年3月1日
+      </p>
+      <div class="rivals-table-wrap">
+        <table class="rivals-table">
+          <thead>
+            <tr>
+              <th>着順</th>
+              <th>馬名</th>
+              <th>騎手</th>
+              <th>ステータス</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank rank-1">1着</td>
+              <td class="horse-name">ソーダーンライト</td>
+              <td>横山武史</td>
+              <td><span class="rival-badge badge-promoted">▲ 昇格済み</span></td>
+              <td>馬群を割って差し切り。好時計</td>
+            </tr>
+            <tr class="evans-row">
+              <td class="rank rank-3">3着</td>
+              <td class="horse-name">レッドエヴァンス ★</td>
+              <td>齋藤新</td>
+              <td><span class="rival-badge badge-self">★ 当馬</span></td>
+              <td>外伸びも坂で苦しむ。復調の兆し</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 巌流島S 2026 -->
+    <div style="margin-bottom:20px;">
+      <p style="font-size:.78rem; color:var(--muted); margin-bottom:6px;">
+        📍 巌流島S（小倉・芝1200m）2026年1月31日
+      </p>
+      <div class="rivals-table-wrap">
+        <table class="rivals-table">
+          <thead>
+            <tr>
+              <th>着順</th>
+              <th>馬名</th>
+              <th>騎手</th>
+              <th>ステータス</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank rank-1">1着</td>
+              <td class="horse-name">デイトナモード</td>
+              <td>小崎綾也</td>
+              <td><span class="rival-badge badge-promoted">▲ 昇格済み</span></td>
+              <td>得意の小倉で一変。内から押し切り</td>
+            </tr>
+            <tr class="evans-row">
+              <td class="rank rank-3">3着</td>
+              <td class="horse-name">レッドエヴァンス ★</td>
+              <td>齋藤新</td>
+              <td><span class="rival-badge badge-self">★ 当馬</span></td>
+              <td>2番人気。進路妨害あり惜敗</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- アクアマリンS 2025 -->
+    <div style="margin-bottom:28px;">
+      <p style="font-size:.78rem; color:var(--muted); margin-bottom:6px;">
+        📍 アクアマリンS（中山・芝1200m）2025年3月2日 ※前年
+      </p>
+      <div class="rivals-table-wrap">
+        <table class="rivals-table">
+          <thead>
+            <tr>
+              <th>着順</th>
+              <th>馬名</th>
+              <th>騎手</th>
+              <th>ステータス</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank rank-1">1着</td>
+              <td class="horse-name">ジューンブレア</td>
+              <td>戸崎圭太</td>
+              <td><span class="rival-badge badge-promoted">▲ 昇格済み</span></td>
+              <td>テンポよく押し切りオープンへ</td>
+            </tr>
+            <tr>
+              <td class="rank rank-2">2着</td>
+              <td class="horse-name">スピードオブライト</td>
+              <td>石川裕紀人</td>
+              <td><span class="rival-badge badge-active">● 3勝クラス</span></td>
+              <td>前で運んで粘り込み。好位差し</td>
+            </tr>
+            <tr>
+              <td class="rank rank-3">3着</td>
+              <td class="horse-name">レオテミス</td>
+              <td>—</td>
+              <td><span class="rival-badge badge-active">● 3勝クラス</span></td>
+              <td>1番人気も届かず惜敗</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══ 芝1400m ═══ -->
+    <h3 style="font-size:.95rem; font-weight:800; color:var(--navy); border-left:4px solid var(--primary); padding-left:10px; margin-bottom:10px;">
+      芝1400m — 3勝クラス
+    </h3>
+
+    <!-- 節分S 2026 -->
+    <div style="margin-bottom:28px;">
+      <p style="font-size:.78rem; color:var(--muted); margin-bottom:6px;">
+        📍 節分S（東京・芝1400m）2026年2月1日
+      </p>
+      <div class="rivals-table-wrap">
+        <table class="rivals-table">
+          <thead>
+            <tr>
+              <th>着順</th>
+              <th>馬名</th>
+              <th>騎手</th>
+              <th>ステータス</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank rank-1">1着〜</td>
+              <td class="horse-name" colspan="4" style="color:var(--muted); font-style:italic; font-size:.82rem;">
+                出走馬詳細はnetkeiba等でご確認ください（15頭立て・芝1400m定量）
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.76rem; color:var(--muted); margin-top:6px; padding-left:4px;">
+        ※ 東京芝1400m 3勝クラスの主要ステークス。渡月橋S（京都6月）・白秋S（東京10月）・飛騨S（中京12月）なども同距離で定期開催。
+      </p>
+    </div>
+
+    <!-- ═══ 芝1000m ═══ -->
+    <h3 style="font-size:.95rem; font-weight:800; color:var(--navy); border-left:4px solid var(--primary); padding-left:10px; margin-bottom:10px;">
+      芝1000m — 3勝クラス（夏季限定・新潟直線）
+    </h3>
+
+    <!-- 駿風S 2025 -->
+    <div style="margin-bottom:16px;">
+      <p style="font-size:.78rem; color:var(--muted); margin-bottom:6px;">
+        📍 駿風S（新潟・芝直線1000m）2025年5月10日 ※直近開催
+      </p>
+      <div class="rivals-table-wrap">
+        <table class="rivals-table">
+          <thead>
+            <tr>
+              <th>着順</th>
+              <th>馬名</th>
+              <th>騎手</th>
+              <th>ステータス</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank rank-1">1着</td>
+              <td class="horse-name">レベレンシア</td>
+              <td>松本大輝</td>
+              <td><span class="rival-badge badge-promoted">▲ 昇格済み</span></td>
+              <td>外枠活かし末脚炸裂。16頭立て</td>
+            </tr>
+            <tr>
+              <td class="rank rank-2">2着</td>
+              <td class="horse-name">カフジテトラゴン</td>
+              <td>小崎綾也</td>
+              <td><span class="rival-badge badge-retired">✕ 抹消</span></td>
+              <td>1番人気も届かず。25年8月に抹消</td>
+            </tr>
+            <tr>
+              <td class="rank rank-3">3着</td>
+              <td class="horse-name">エコロレジーナ</td>
+              <td>—</td>
+              <td><span class="rival-badge badge-active">● 3勝クラス</span></td>
+              <td>9番人気での好走</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.76rem; color:var(--muted); margin-top:6px; padding-left:4px;">
+        ※ 新潟・芝直線1000mの3勝クラスは毎年5月開催の「駿風S」が代表格。夏の「アイビスSD（G3）」への出走権争いの場にもなる。
+      </p>
+    </div>
+
+    <!-- 注釈 -->
+    <div style="margin-top:24px; padding:12px 16px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; font-size:.78rem; color:var(--text-sub); line-height:1.8;">
+      <strong>📌 データについて：</strong>
+      出走馬情報は netkeiba・競馬ラボ・ラジオNIKKEI等をもとに収集（2026年3月時点）。
+      「▲ 昇格済み」はオープン昇格が確認された馬。現3勝クラス馬のクラス確認は各馬の公式プロフィールをご参照ください。
+    </div>
+
+  </section>
+
+  </div><!-- /tab-rivals -->
 
 </main>
 
