@@ -435,6 +435,241 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: flex; flex-direction: column; gap: 20px; }
 
+    /* ─── HEADER IMAGE ─── */
+    .header-photo {
+      width: 140px;
+      height: 90px;
+      object-fit: cover;
+      object-position: center 30%;
+      border: 2px solid rgba(255,255,255,.25);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    @media(max-width: 560px){ .header-photo { display: none; } }
+
+    /* ─── PHASE ANALYSIS ─── */
+    .phase-block {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .phase-header {
+      background: linear-gradient(135deg, var(--navy) 0%, #004080 100%);
+      border-left: 5px solid var(--primary);
+      padding: 12px 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .phase-header .phase-num {
+      font-size: .66rem;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: .1em;
+      background: rgba(255,255,255,.1);
+      padding: 2px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .phase-header .phase-title {
+      font-size: .92rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .03em;
+    }
+    .phase-header .phase-period {
+      font-size: .74rem;
+      color: rgba(255,255,255,.6);
+      margin-left: auto;
+    }
+    .phase-analysis {
+      padding: 12px 16px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      font-size: .82rem;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .phase-analysis .ana-point {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 2px;
+      font-weight: 700;
+      font-size: .74rem;
+      margin-right: 4px;
+    }
+    .ana-plus  { background: #d4f0d4; color: var(--green); }
+    .ana-minus { background: #fde8e8; color: var(--red); }
+    .ana-note  { background: #fff3cd; color: var(--yellow); }
+    .weight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--navy);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 2px;
+      float: right;
+    }
+    .phase-grid-wrap {
+      padding: 12px;
+    }
+
+    /* ─── WEIGHT TIMELINE ─── */
+    .weight-chart {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 14px 16px 10px;
+    }
+    .weight-chart h3 {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wt-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 80px;
+    }
+    .wt-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      gap: 2px;
+    }
+    .wt-bar {
+      width: 100%;
+      border-radius: 2px 2px 0 0;
+      background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+      transition: height .4s ease;
+      position: relative;
+    }
+    .wt-bar:hover::after {
+      content: attr(data-weight) 'kg';
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--navy);
+      color: #fff;
+      font-size: .66rem;
+      padding: 2px 5px;
+      border-radius: 2px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .wt-label {
+      font-size: .58rem;
+      color: var(--muted);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    /* ─── INSIGHT CARDS ─── */
+    .insight-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .insight-section h3 {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+    .insight-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      padding: 12px 14px;
+    }
+    .insight-card.green  { border-top-color: var(--green); }
+    .insight-card.red    { border-top-color: var(--red); }
+    .insight-card.navy   { border-top-color: var(--navy); }
+    .insight-card h4 {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .insight-item {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+      font-size: .8rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 5px;
+    }
+    .insight-item::before {
+      content: '▶';
+      font-size: .6rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .insight-item.minus::before { content: '▼'; color: var(--red); }
+    .insight-item strong { color: var(--text); }
+    .next-race-box {
+      background: linear-gradient(135deg, var(--navy) 0%, #004a90 100%);
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      align-items: center;
+    }
+    .next-race-box .nr-title {
+      font-size: .72rem;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .08em;
+    }
+    .next-race-box .nr-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffc43a;
+    }
+    .next-race-box .nr-detail {
+      font-size: .8rem;
+      color: rgba(255,255,255,.8);
+    }
+    .next-race-box .nr-point {
+      font-size: .78rem;
+      color: rgba(255,255,255,.75);
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,.15);
+      padding-top: 8px;
+      margin-top: 2px;
+      line-height: 1.7;
+    }
+
     /* ─── PHOTO GALLERY ─── */
     .photo-year-group { margin-bottom: 8px; }
     .photo-year-label {
@@ -639,6 +874,7 @@
       <h1><span>エヴァンスを追え！</span></h1>
       <p class="tagline">レッドエヴァンス — 血統・戦績から読み解く「次走パフォーマンス予測」</p>
     </div>
+    <img src="img/best.jpg" alt="レッドエヴァンス" class="header-photo">
     <span class="updated">最終更新: 2026年3月24日</span>
   </div>
 </header>
@@ -1225,140 +1461,213 @@
   <div class="tab-panel" id="tab-photos">
 
   <section>
-    <h2><span class="icon">🖼</span>馬体写真ギャラリー</h2>
-    <div style="padding:16px; display:flex; flex-direction:column; gap:20px;">
+    <h2><span class="icon">🖼</span>馬体診断 — フェーズ別成長分析</h2>
 
-      <!-- ベストショット -->
-      <div class="photo-year-label">BEST SHOT</div>
-      <div class="photo-grid">
-        <div class="photo-card photo-best" onclick="openLightbox('img/best.jpg','ベストショット')">
-          <img src="img/best.jpg" alt="ベストショット" loading="lazy">
-          <div class="photo-caption">ベストショット</div>
+    <!-- 体重推移チャート -->
+    <div style="padding:16px 16px 0;">
+    <div class="weight-chart">
+      <h3>📊 馬体重推移（主要記録）</h3>
+      <div class="wt-bars" id="wtBars"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:2px;font-size:.6rem;color:var(--muted);">
+        <span>427kg（2歳・22年9月）</span><span>最大 508kg（23年9月）</span><span>現在 508kg（26年3月）</span>
+      </div>
+    </div>
+    </div>
+
+    <div style="padding:16px; display:flex; flex-direction:column; gap:16px;">
+
+      <!-- Phase 1 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 1</span>
+          <span class="phase-title">当歳・育成開始期</span>
+          <span class="phase-period">2022年7月〜12月 / 427→455kg</span>
+        </div>
+        <div class="phase-analysis">
+          <span class="weight-badge">427→455 kg <span style="color:#ffc43a;margin-left:4px;">+28</span></span>
+          <p><span class="ana-point ana-plus">強み</span>側面から見て背中のラインが水平で美しく、柔軟性の高い身体つき。黒鹿毛の毛色が際立ち、骨格・手足のバランスは既に一流の完成度。胸深・体幹の伸びやかさは父ロードカナロアゆずり。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-minus">課題</span>全体的にまだ線が細く、特に<strong>トモ（後肢）の筋肉量が不十分</strong>。胸部の厚みもこれからで、5月生まれの遅生まれゆえ発達は同世代比で一段階遅れ。腹袋も薄く、力強さは蓄積途中。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-note">変化</span>10月にノーザンファーム空港へ移動後、急速に実が入りはじめる。12月末には眼光が鋭くなり「競走馬らしいピリッとした面」が表れてきた。</p>
+        </div>
+        <div class="phase-grid-wrap">
+          <div class="photo-grid">
+            <div class="photo-card" onclick="openLightbox('img/20220708.jpg','2022年7月8日（当歳）')">
+              <img src="img/20220708.jpg" alt="2022/07/08" loading="lazy">
+              <div class="photo-caption">2022年7月8日</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20220831.jpg','2022年8月31日')">
+              <img src="img/20220831.jpg" alt="2022/08/31" loading="lazy">
+              <div class="photo-caption">2022年8月31日</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20220930.jpg','2022年9月30日 / 427kg')">
+              <img src="img/20220930.jpg" alt="2022/09/30" loading="lazy">
+              <div class="photo-caption">2022年9月30日 / 427kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20221031.jpg','2022年10月31日 / 449kg')">
+              <img src="img/20221031.jpg" alt="2022/10/31" loading="lazy">
+              <div class="photo-caption">2022年10月31日 / 449kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20221130.jpg','2022年11月30日 / 451kg')">
+              <img src="img/20221130.jpg" alt="2022/11/30" loading="lazy">
+              <div class="photo-caption">2022年11月30日 / 451kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20221228.jpg','2022年12月28日 / 455kg')">
+              <img src="img/20221228.jpg" alt="2022/12/28" loading="lazy">
+              <div class="photo-caption">2022年12月28日 / 455kg</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- 2022年 -->
-      <div class="photo-year-label">2022年</div>
-      <div class="photo-grid">
-        <div class="photo-card" onclick="openLightbox('img/20220708.jpg','2022年7月8日')">
-          <img src="img/20220708.jpg" alt="2022/07/08" loading="lazy">
-          <div class="photo-caption">2022年7月8日</div>
+      <!-- Phase 2 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 2</span>
+          <span class="phase-title">北海道・本格育成期</span>
+          <span class="phase-period">2023年1月〜9月 / 465→508kg</span>
         </div>
-        <div class="photo-card" onclick="openLightbox('img/20220831.jpg','2022年8月31日')">
-          <img src="img/20220831.jpg" alt="2022/08/31" loading="lazy">
-          <div class="photo-caption">2022年8月31日</div>
+        <div class="phase-analysis">
+          <span class="weight-badge">465→508 kg <span style="color:#ffc43a;margin-left:4px;">+43</span></span>
+          <p><span class="ana-point ana-plus">強み</span>この期間で最大+43kgという大幅増量。7月頃からトモの筋肉量が目に見えて増し、背中ラインの美しさに加えて「ダイナミックなストライド」が特徴として定着。毛艶・飼い葉食いともに一貫して良好。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-minus">課題</span>7月時点でも「緩さを残している」とされ体幹強化が続く課題。坂路に入ると気負う傾向も発見。9月末に508kgのピーク体重を記録するも、移動直後は背腰の疲労感が確認された。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-note">変化</span>6月頃から「精神的にもドッシリとしてきた」という記述が増加。フォームの安定と体力の向上が比例して進み、8月には「心身両面で大人びてきた」と評価が高まった。</p>
         </div>
-        <div class="photo-card" onclick="openLightbox('img/20220930.jpg','2022年9月30日')">
-          <img src="img/20220930.jpg" alt="2022/09/30" loading="lazy">
-          <div class="photo-caption">2022年9月30日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20221031.jpg','2022年10月31日')">
-          <img src="img/20221031.jpg" alt="2022/10/31" loading="lazy">
-          <div class="photo-caption">2022年10月31日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20221130.jpg','2022年11月30日')">
-          <img src="img/20221130.jpg" alt="2022/11/30" loading="lazy">
-          <div class="photo-caption">2022年11月30日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20221228.jpg','2022年12月28日')">
-          <img src="img/20221228.jpg" alt="2022/12/28" loading="lazy">
-          <div class="photo-caption">2022年12月28日</div>
-        </div>
-      </div>
-
-      <!-- 2023年 -->
-      <div class="photo-year-label">2023年</div>
-      <div class="photo-grid">
-        <div class="photo-card" onclick="openLightbox('img/20230131.jpg','2023年1月31日')">
-          <img src="img/20230131.jpg" alt="2023/01/31" loading="lazy">
-          <div class="photo-caption">2023年1月31日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230228.jpg','2023年2月28日')">
-          <img src="img/20230228.jpg" alt="2023/02/28" loading="lazy">
-          <div class="photo-caption">2023年2月28日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230331.jpg','2023年3月31日')">
-          <img src="img/20230331.jpg" alt="2023/03/31" loading="lazy">
-          <div class="photo-caption">2023年3月31日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230501.jpg','2023年5月1日')">
-          <img src="img/20230501.jpg" alt="2023/05/01" loading="lazy">
-          <div class="photo-caption">2023年5月1日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230531.jpg','2023年5月31日')">
-          <img src="img/20230531.jpg" alt="2023/05/31" loading="lazy">
-          <div class="photo-caption">2023年5月31日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230630.jpg','2023年6月30日')">
-          <img src="img/20230630.jpg" alt="2023/06/30" loading="lazy">
-          <div class="photo-caption">2023年6月30日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230731.jpg','2023年7月31日')">
-          <img src="img/20230731.jpg" alt="2023/07/31" loading="lazy">
-          <div class="photo-caption">2023年7月31日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230831.jpg','2023年8月31日')">
-          <img src="img/20230831.jpg" alt="2023/08/31" loading="lazy">
-          <div class="photo-caption">2023年8月31日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20230929.jpg','2023年9月29日')">
-          <img src="img/20230929.jpg" alt="2023/09/29" loading="lazy">
-          <div class="photo-caption">2023年9月29日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20231103.jpg','2023年11月3日')">
-          <img src="img/20231103.jpg" alt="2023/11/03" loading="lazy">
-          <div class="photo-caption">2023年11月3日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20231201.jpg','2023年12月1日')">
-          <img src="img/20231201.jpg" alt="2023/12/01" loading="lazy">
-          <div class="photo-caption">2023年12月1日</div>
+        <div class="phase-grid-wrap">
+          <div class="photo-grid">
+            <div class="photo-card" onclick="openLightbox('img/20230131.jpg','2023年1月31日 / 465kg')">
+              <img src="img/20230131.jpg" alt="2023/01/31" loading="lazy">
+              <div class="photo-caption">2023年1月31日 / 465kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230228.jpg','2023年2月28日 / 471kg')">
+              <img src="img/20230228.jpg" alt="2023/02/28" loading="lazy">
+              <div class="photo-caption">2023年2月28日 / 471kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230331.jpg','2023年3月31日 / 484kg')">
+              <img src="img/20230331.jpg" alt="2023/03/31" loading="lazy">
+              <div class="photo-caption">2023年3月31日 / 484kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230501.jpg','2023年5月1日 / 476kg')">
+              <img src="img/20230501.jpg" alt="2023/05/01" loading="lazy">
+              <div class="photo-caption">2023年5月1日 / 476kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230531.jpg','2023年5月31日 / 489kg')">
+              <img src="img/20230531.jpg" alt="2023/05/31" loading="lazy">
+              <div class="photo-caption">2023年5月31日 / 489kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230630.jpg','2023年6月30日 / 492kg')">
+              <img src="img/20230630.jpg" alt="2023/06/30" loading="lazy">
+              <div class="photo-caption">2023年6月30日 / 492kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230731.jpg','2023年7月31日 / 495kg')">
+              <img src="img/20230731.jpg" alt="2023/07/31" loading="lazy">
+              <div class="photo-caption">2023年7月31日 / 495kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230831.jpg','2023年8月31日 / 493kg')">
+              <img src="img/20230831.jpg" alt="2023/08/31" loading="lazy">
+              <div class="photo-caption">2023年8月31日 / 493kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20230929.jpg','2023年9月29日 / 508kg（ピーク）')">
+              <img src="img/20230929.jpg" alt="2023/09/29" loading="lazy">
+              <div class="photo-caption">2023年9月29日 / 508kg ★</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- 2024年 -->
-      <div class="photo-year-label">2024年</div>
-      <div class="photo-grid">
-        <div class="photo-card" onclick="openLightbox('img/20240405.jpg','2024年4月5日')">
-          <img src="img/20240405.jpg" alt="2024/04/05" loading="lazy">
-          <div class="photo-caption">2024年4月5日</div>
+      <!-- Phase 3 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 3</span>
+          <span class="phase-title">入厩・デビュー直前〜初戦</span>
+          <span class="phase-period">2023年11月〜2024年4月 / 504→490kg台</span>
         </div>
-        <div class="photo-card" onclick="openLightbox('img/20240524.jpg','2024年5月24日')">
-          <img src="img/20240524.jpg" alt="2024/05/24" loading="lazy">
-          <div class="photo-caption">2024年5月24日</div>
+        <div class="phase-analysis">
+          <span class="weight-badge">504→490kg台</span>
+          <p><span class="ana-point ana-plus">強み</span>ゲート試験合格後に本格的な競走馬体型へと引き締まり。特に11月入厩時点で「毛ヅヤがピカピカ」とコンディションの良さが光る。首〜肩の筋肉ラインが明確になり、競走馬としての輪郭が整ってきた。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-minus">課題</span>入厩当初は「隣の馬を噛む」「立ち上がる」などのやんちゃな面が露出。デビュー戦（1/14京都）ではキックバックに反応してほぼ走れず。精神面の幼さが馬体以上の課題として浮上。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-note">変化</span>2024年4月の写真では全身の筋肉バランスが均整のとれた状態に到達。胸前〜トモにかけての厚みが格段に増し、3歳春で一段階「大人の馬体」に変貌した節目の時期。</p>
         </div>
-        <div class="photo-card" onclick="openLightbox('img/20240913.jpg','2024年9月13日')">
-          <img src="img/20240913.jpg" alt="2024/09/13" loading="lazy">
-          <div class="photo-caption">2024年9月13日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20241129.jpg','2024年11月29日')">
-          <img src="img/20241129.jpg" alt="2024/11/29" loading="lazy">
-          <div class="photo-caption">2024年11月29日</div>
-        </div>
-      </div>
-
-      <!-- 2025年 -->
-      <div class="photo-year-label">2025年</div>
-      <div class="photo-grid">
-        <div class="photo-card" onclick="openLightbox('img/20250110.jpg','2025年1月10日')">
-          <img src="img/20250110.jpg" alt="2025/01/10" loading="lazy">
-          <div class="photo-caption">2025年1月10日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20250516.jpg','2025年5月16日')">
-          <img src="img/20250516.jpg" alt="2025/05/16" loading="lazy">
-          <div class="photo-caption">2025年5月16日</div>
-        </div>
-        <div class="photo-card" onclick="openLightbox('img/20251212.jpg','2025年12月12日')">
-          <img src="img/20251212.jpg" alt="2025/12/12" loading="lazy">
-          <div class="photo-caption">2025年12月12日</div>
+        <div class="phase-grid-wrap">
+          <div class="photo-grid">
+            <div class="photo-card" onclick="openLightbox('img/20231103.jpg','2023年11月3日 / 504kg（入厩前）')">
+              <img src="img/20231103.jpg" alt="2023/11/03" loading="lazy">
+              <div class="photo-caption">2023年11月3日 / 504kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20231201.jpg','2023年12月1日 / 505kg')">
+              <img src="img/20231201.jpg" alt="2023/12/01" loading="lazy">
+              <div class="photo-caption">2023年12月1日 / 505kg</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20240405.jpg','2024年4月5日')">
+              <img src="img/20240405.jpg" alt="2024/04/05" loading="lazy">
+              <div class="photo-caption">2024年4月5日</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- 2026年 -->
-      <div class="photo-year-label">2026年</div>
-      <div class="photo-grid">
-        <div class="photo-card" onclick="openLightbox('img/20260306.jpg','2026年3月6日')">
-          <img src="img/20260306.jpg" alt="2026/03/06" loading="lazy">
-          <div class="photo-caption">2026年3月6日</div>
+      <!-- Phase 4 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 4</span>
+          <span class="phase-title">本格参戦・連勝期</span>
+          <span class="phase-period">2024年5月〜2025年1月 / 490〜510kg</span>
+        </div>
+        <div class="phase-analysis">
+          <span class="weight-badge">490〜510 kg</span>
+          <p><span class="ana-point ana-plus">強み</span>5月の秋吉台S・8月の袖ケ浦S連勝時期に対応した馬体。全身の筋肉量が安定し、特に後肢〜トモ〜腰にかけての「推進力の源」となる部位が著しく発達。前肢の踏み込み深さも改善されランニングフォームが安定した。毛色にも光沢が増し、競走馬としての充実ぶりが外見に表れている。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-minus">課題</span>2024年末〜2025年初にかけては3勝クラスで苦戦が続き、気性面（前走で暴れて人を落とすなど）と折り合い面が最大の課題として継続。直線でソラを使う（気が抜ける）癖も指摘が増えた時期。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-note">変化</span>2024年秋に去勢（セン馬化）を実施。以降「カリカリした面が激減」「走ることに真面目」と記述が一変。精神面の安定が馬体の安定にも直結し始めた転換点。</p>
+        </div>
+        <div class="phase-grid-wrap">
+          <div class="photo-grid">
+            <div class="photo-card" onclick="openLightbox('img/20240524.jpg','2024年5月24日')">
+              <img src="img/20240524.jpg" alt="2024/05/24" loading="lazy">
+              <div class="photo-caption">2024年5月24日</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20240913.jpg','2024年9月13日')">
+              <img src="img/20240913.jpg" alt="2024/09/13" loading="lazy">
+              <div class="photo-caption">2024年9月13日</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20241129.jpg','2024年11月29日')">
+              <img src="img/20241129.jpg" alt="2024/11/29" loading="lazy">
+              <div class="photo-caption">2024年11月29日</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20250110.jpg','2025年1月10日')">
+              <img src="img/20250110.jpg" alt="2025/01/10" loading="lazy">
+              <div class="photo-caption">2025年1月10日</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 5</span>
+          <span class="phase-title">去勢後の充実期（現在）</span>
+          <span class="phase-period">2025年5月〜2026年3月 / 492→508kg</span>
+        </div>
+        <div class="phase-analysis">
+          <span class="weight-badge">492→508 kg <span style="color:#ffc43a;margin-left:4px;">↑増加中</span></span>
+          <p><span class="ana-point ana-plus">強み</span>去勢の効果が馬体にも如実に表れている時期。2025年5月の写真では全身に均一な筋肉量を持ち、コート（被毛）が鮮やかな光沢を帯びる。腹袋のしっかりとした充実感と、トモ〜後肢の力強さは過去最高水準。2026年3月（492→508kg）では放牧中でも毛が長くならず「コンディションは安定」と一貫。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-minus">課題</span>2026年3月時点では回復期のため全体的にやや細め。レース直前は体重が増える傾向があり、508kg程度が実戦時の理想水準と推測される。</p>
+          <p style="margin-top:8px;"><span class="ana-point ana-note">変化</span>2026年3月1日のアクアマリンS（3着）でもレース前の馬体チェックで「前後左右のバランスや股関節の動きが非常に良く、踏み込みも力強い」と獣医師に太鼓判を押された。5年間の成長の集大成として、肉体的には全盛期の充実度に達している。</p>
+        </div>
+        <div class="phase-grid-wrap">
+          <div class="photo-grid">
+            <div class="photo-card" onclick="openLightbox('img/20250516.jpg','2025年5月16日')">
+              <img src="img/20250516.jpg" alt="2025/05/16" loading="lazy">
+              <div class="photo-caption">2025年5月16日</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20251212.jpg','2025年12月12日')">
+              <img src="img/20251212.jpg" alt="2025/12/12" loading="lazy">
+              <div class="photo-caption">2025年12月12日</div>
+            </div>
+            <div class="photo-card" onclick="openLightbox('img/20260306.jpg','2026年3月6日 / 492kg')">
+              <img src="img/20260306.jpg" alt="2026/03/06" loading="lazy">
+              <div class="photo-caption">2026年3月6日 / 492kg</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1369,6 +1678,55 @@
 
   <!-- ── コメントタブ ── -->
   <div class="tab-panel" id="tab-comments">
+
+  <!-- インサイト -->
+  <section>
+    <h2><span class="icon">🧠</span>コメント解析インサイト</h2>
+    <div style="padding:16px; display:flex; flex-direction:column; gap:12px;">
+
+      <!-- 次走への期待 -->
+      <div class="next-race-box">
+        <div>
+          <p class="nr-title">NEXT RACE</p>
+          <p class="nr-name">朱雀ステークス</p>
+          <p class="nr-detail">5月3日（土）京都10R · 4歳上3勝クラス · 芝1200m · 定量</p>
+        </div>
+        <div>
+          <p class="nr-title">調教師コメント</p>
+          <p class="nr-detail" style="font-weight:700;color:#ffc43a;">「次は決めたい。夏以降はオープンでの活躍を期待」</p>
+          <p class="nr-detail">— 東田明士調教師（2026年3月4日）</p>
+        </div>
+        <p class="nr-point">
+          ✅ <strong>平坦コース（京都外回り）</strong>で坂の弱点が解消 &emsp;
+          ✅ <strong>中4週以上</strong>の十分な間隔で疲労抜け &emsp;
+          ✅ <strong>去勢効果</strong>で折り合い・集中力が最高水準 &emsp;
+          ✅ <strong>馬体重508kg</strong>（3月20日）と実戦仕様に増加中
+        </p>
+      </div>
+
+      <!-- 強み・弱点グリッド -->
+      <div class="insight-grid">
+        <div class="insight-card green">
+          <h4>💪 強み（コメントから抽出）</h4>
+          <div class="insight-item"><strong>素軽いフットワーク</strong> — 入厩当初から一貫して評価される持ち前の身のこなし。フォーム改善後はさらに全身を使えるようになった。</div>
+          <div class="insight-item"><strong>去勢後の集中力</strong> — 「走ることに真面目」「遊ぶような面を見せない」。気性面の課題が解消され調教・レース双方でプラスに。</div>
+          <div class="insight-item"><strong>高い回復力</strong> — レース後も「目立ったダメージなし」「食欲旺盛」が繰り返し記録。タフさは潜在能力の証明。</div>
+          <div class="insight-item"><strong>潜在能力の高さ</strong> — 複数の調教師・騎手が「このクラスでは能力上位」と評価。追い切りで予定より速い時計が出ることが多い。</div>
+          <div class="insight-item"><strong>折り合いの改善</strong> — かつては力んで終い伸び切れないケースが多かったが、去勢後は「スムーズに折り合って追走」が定着。</div>
+        </div>
+
+        <div class="insight-card red">
+          <h4>⚠️ 弱点（コメントから抽出）</h4>
+          <div class="insight-item minus"><strong>直線でソラを使う</strong> — 抜け出すと気が緩む傾向。前に馬がいる方が末脚を発揮しやすく、番手〜中団からの競馬が理想。</div>
+          <div class="insight-item minus"><strong>仕掛けタイミングの難しさ</strong> — 3/1アクアマリンSでは「あと一呼吸我慢できれば」と荻野騎手が自省。機動力のある騎乗が求められる。</div>
+          <div class="insight-item minus"><strong>外を回す癖・大外不利</strong> — 内で脚を溜めた馬との枠順差が着差に直結。内枠・内を通れる展開が欲しい。</div>
+          <div class="insight-item minus"><strong>急坂コースへの適性</strong> — 中山・阪神など坂のあるコースより平坦の京都・小倉でパフォーマンスが上がる傾向。朱雀Sは平坦で好条件。</div>
+          <div class="insight-item minus"><strong>速い流れ・前有利展開</strong> — ハイペースでも前が止まらない展開（1/31巌流島S）では差しが届きにくい。ミドル〜スローペースが理想。</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <section>
     <h2><span class="icon">💬</span>近況コメント一覧</h2>
@@ -1517,6 +1875,29 @@
     });
   });
   document.getElementById('commentSearch').addEventListener('input', renderComments);
+
+  /* ── 体重チャート描画 ── */
+  (function() {
+    const data = [
+      {label:'22/09',w:427},{label:'22/10',w:449},{label:'22/11',w:451},{label:'22/12',w:455},
+      {label:'23/01',w:465},{label:'23/02',w:471},{label:'23/03',w:484},{label:'23/05',w:476},
+      {label:'23/06',w:492},{label:'23/07',w:495},{label:'23/08',w:493},{label:'23/09',w:508},
+      {label:'23/11',w:502},{label:'23/12',w:505},
+      {label:'24/04',w:490},{label:'24/05',w:498},{label:'24/11',w:506},
+      {label:'25/01',w:494},{label:'25/05',w:502},{label:'25/12',w:498},
+      {label:'26/03',w:508}
+    ];
+    const min = 410, max = 520, range = max - min;
+    const wrap = document.getElementById('wtBars');
+    if (!wrap) return;
+    data.forEach(d => {
+      const pct = ((d.w - min) / range * 100).toFixed(1);
+      const col = document.createElement('div');
+      col.className = 'wt-col';
+      col.innerHTML = `<div class="wt-bar" style="height:${pct}%" data-weight="${d.w}"></div><div class="wt-label">${d.label}</div>`;
+      wrap.appendChild(col);
+    });
+  })();
 </script>
 </body>
 </html>
