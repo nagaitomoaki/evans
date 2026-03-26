@@ -435,6 +435,186 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: flex; flex-direction: column; gap: 20px; }
 
+    /* ─── PHOTO GALLERY ─── */
+    .photo-year-group { margin-bottom: 8px; }
+    .photo-year-label {
+      font-size: .78rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--navy);
+      border-left: 4px solid var(--primary);
+      padding: 5px 12px;
+      margin-bottom: 10px;
+      letter-spacing: .05em;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    .photo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow .15s;
+    }
+    .photo-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,.15); }
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-card .photo-caption {
+      padding: 5px 8px;
+      font-size: .72rem;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .photo-best {
+      grid-column: 1 / -1;
+    }
+    .photo-best img {
+      aspect-ratio: 16/7;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.85);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border: 2px solid rgba(255,255,255,.2);
+    }
+    .lightbox .lb-caption {
+      color: rgba(255,255,255,.8);
+      font-size: .9rem;
+    }
+    .lightbox .lb-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ─── COMMENTS ─── */
+    .comment-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 12px 16px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+    }
+    .comment-filters label {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-right: 4px;
+      white-space: nowrap;
+      align-self: center;
+    }
+    .filter-btn {
+      padding: 3px 10px;
+      font-size: .76rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-sub);
+      cursor: pointer;
+      border-radius: 2px;
+      font-family: inherit;
+      transition: background .12s, color .12s;
+    }
+    .filter-btn:hover { background: #f0ece8; }
+    .filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .comment-search {
+      padding: 4px 10px;
+      font-size: .82rem;
+      border: 1px solid var(--border);
+      font-family: inherit;
+      flex: 1;
+      min-width: 160px;
+      max-width: 280px;
+    }
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .comment-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+    }
+    .comment-card .c-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .comment-card .c-date {
+      font-size: .74rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .comment-card .c-name {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .comment-card .c-loc {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+    .comment-card .c-body {
+      font-size: .82rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .comment-name-badge {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 2px;
+      font-size: .7rem;
+      font-weight: 700;
+      background: var(--navy);
+      color: #fff;
+    }
+    .comment-name-badge.jockey  { background: var(--blue); }
+    .comment-name-badge.trainer { background: var(--primary-dark); }
+    .comment-name-badge.farm    { background: var(--green); }
+    #comment-count {
+      font-size: .78rem;
+      color: var(--muted);
+      padding: 4px 0;
+      align-self: flex-end;
+    }
+    .comments-loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
     /* ─── FOOTER ─── */
     footer {
       text-align: center;
@@ -469,6 +649,8 @@
   <button class="tab-btn" data-tab="records">🏁 戦績</button>
   <button class="tab-btn" data-tab="analysis">🔍 分析</button>
   <button class="tab-btn" data-tab="prediction">🎯 次走予想</button>
+  <button class="tab-btn" data-tab="photos">🖼 馬体診断</button>
+  <button class="tab-btn" data-tab="comments">💬 コメント</button>
 </nav>
 
 <!-- ════════════ MAIN ════════════ -->
@@ -1039,7 +1221,197 @@
 
   </div><!-- /tab-prediction -->
 
+  <!-- ── 馬体診断タブ ── -->
+  <div class="tab-panel" id="tab-photos">
+
+  <section>
+    <h2><span class="icon">🖼</span>馬体写真ギャラリー</h2>
+    <div style="padding:16px; display:flex; flex-direction:column; gap:20px;">
+
+      <!-- ベストショット -->
+      <div class="photo-year-label">BEST SHOT</div>
+      <div class="photo-grid">
+        <div class="photo-card photo-best" onclick="openLightbox('img/best.jpg','ベストショット')">
+          <img src="img/best.jpg" alt="ベストショット" loading="lazy">
+          <div class="photo-caption">ベストショット</div>
+        </div>
+      </div>
+
+      <!-- 2022年 -->
+      <div class="photo-year-label">2022年</div>
+      <div class="photo-grid">
+        <div class="photo-card" onclick="openLightbox('img/20220708.jpg','2022年7月8日')">
+          <img src="img/20220708.jpg" alt="2022/07/08" loading="lazy">
+          <div class="photo-caption">2022年7月8日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20220831.jpg','2022年8月31日')">
+          <img src="img/20220831.jpg" alt="2022/08/31" loading="lazy">
+          <div class="photo-caption">2022年8月31日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20220930.jpg','2022年9月30日')">
+          <img src="img/20220930.jpg" alt="2022/09/30" loading="lazy">
+          <div class="photo-caption">2022年9月30日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20221031.jpg','2022年10月31日')">
+          <img src="img/20221031.jpg" alt="2022/10/31" loading="lazy">
+          <div class="photo-caption">2022年10月31日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20221130.jpg','2022年11月30日')">
+          <img src="img/20221130.jpg" alt="2022/11/30" loading="lazy">
+          <div class="photo-caption">2022年11月30日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20221228.jpg','2022年12月28日')">
+          <img src="img/20221228.jpg" alt="2022/12/28" loading="lazy">
+          <div class="photo-caption">2022年12月28日</div>
+        </div>
+      </div>
+
+      <!-- 2023年 -->
+      <div class="photo-year-label">2023年</div>
+      <div class="photo-grid">
+        <div class="photo-card" onclick="openLightbox('img/20230131.jpg','2023年1月31日')">
+          <img src="img/20230131.jpg" alt="2023/01/31" loading="lazy">
+          <div class="photo-caption">2023年1月31日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230228.jpg','2023年2月28日')">
+          <img src="img/20230228.jpg" alt="2023/02/28" loading="lazy">
+          <div class="photo-caption">2023年2月28日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230331.jpg','2023年3月31日')">
+          <img src="img/20230331.jpg" alt="2023/03/31" loading="lazy">
+          <div class="photo-caption">2023年3月31日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230501.jpg','2023年5月1日')">
+          <img src="img/20230501.jpg" alt="2023/05/01" loading="lazy">
+          <div class="photo-caption">2023年5月1日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230531.jpg','2023年5月31日')">
+          <img src="img/20230531.jpg" alt="2023/05/31" loading="lazy">
+          <div class="photo-caption">2023年5月31日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230630.jpg','2023年6月30日')">
+          <img src="img/20230630.jpg" alt="2023/06/30" loading="lazy">
+          <div class="photo-caption">2023年6月30日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230731.jpg','2023年7月31日')">
+          <img src="img/20230731.jpg" alt="2023/07/31" loading="lazy">
+          <div class="photo-caption">2023年7月31日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230831.jpg','2023年8月31日')">
+          <img src="img/20230831.jpg" alt="2023/08/31" loading="lazy">
+          <div class="photo-caption">2023年8月31日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20230929.jpg','2023年9月29日')">
+          <img src="img/20230929.jpg" alt="2023/09/29" loading="lazy">
+          <div class="photo-caption">2023年9月29日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20231103.jpg','2023年11月3日')">
+          <img src="img/20231103.jpg" alt="2023/11/03" loading="lazy">
+          <div class="photo-caption">2023年11月3日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20231201.jpg','2023年12月1日')">
+          <img src="img/20231201.jpg" alt="2023/12/01" loading="lazy">
+          <div class="photo-caption">2023年12月1日</div>
+        </div>
+      </div>
+
+      <!-- 2024年 -->
+      <div class="photo-year-label">2024年</div>
+      <div class="photo-grid">
+        <div class="photo-card" onclick="openLightbox('img/20240405.jpg','2024年4月5日')">
+          <img src="img/20240405.jpg" alt="2024/04/05" loading="lazy">
+          <div class="photo-caption">2024年4月5日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20240524.jpg','2024年5月24日')">
+          <img src="img/20240524.jpg" alt="2024/05/24" loading="lazy">
+          <div class="photo-caption">2024年5月24日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20240913.jpg','2024年9月13日')">
+          <img src="img/20240913.jpg" alt="2024/09/13" loading="lazy">
+          <div class="photo-caption">2024年9月13日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20241129.jpg','2024年11月29日')">
+          <img src="img/20241129.jpg" alt="2024/11/29" loading="lazy">
+          <div class="photo-caption">2024年11月29日</div>
+        </div>
+      </div>
+
+      <!-- 2025年 -->
+      <div class="photo-year-label">2025年</div>
+      <div class="photo-grid">
+        <div class="photo-card" onclick="openLightbox('img/20250110.jpg','2025年1月10日')">
+          <img src="img/20250110.jpg" alt="2025/01/10" loading="lazy">
+          <div class="photo-caption">2025年1月10日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20250516.jpg','2025年5月16日')">
+          <img src="img/20250516.jpg" alt="2025/05/16" loading="lazy">
+          <div class="photo-caption">2025年5月16日</div>
+        </div>
+        <div class="photo-card" onclick="openLightbox('img/20251212.jpg','2025年12月12日')">
+          <img src="img/20251212.jpg" alt="2025/12/12" loading="lazy">
+          <div class="photo-caption">2025年12月12日</div>
+        </div>
+      </div>
+
+      <!-- 2026年 -->
+      <div class="photo-year-label">2026年</div>
+      <div class="photo-grid">
+        <div class="photo-card" onclick="openLightbox('img/20260306.jpg','2026年3月6日')">
+          <img src="img/20260306.jpg" alt="2026/03/06" loading="lazy">
+          <div class="photo-caption">2026年3月6日</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  </div><!-- /tab-photos -->
+
+  <!-- ── コメントタブ ── -->
+  <div class="tab-panel" id="tab-comments">
+
+  <section>
+    <h2><span class="icon">💬</span>近況コメント一覧</h2>
+
+    <div class="comment-filters">
+      <label>年:</label>
+      <button class="filter-btn active" data-year="all">全期間</button>
+      <button class="filter-btn" data-year="2022">2022</button>
+      <button class="filter-btn" data-year="2023">2023</button>
+      <button class="filter-btn" data-year="2024">2024</button>
+      <button class="filter-btn" data-year="2025">2025</button>
+      <button class="filter-btn" data-year="2026">2026</button>
+      <label style="margin-left:8px;">種別:</label>
+      <button class="filter-btn active" data-role="all">全員</button>
+      <button class="filter-btn" data-role="騎手">騎手</button>
+      <button class="filter-btn" data-role="調教師">調教師</button>
+      <button class="filter-btn" data-role="助手">助手</button>
+      <button class="filter-btn" data-role="farm">牧場</button>
+      <input class="comment-search" type="text" id="commentSearch" placeholder="キーワード検索…">
+    </div>
+
+    <div style="padding:4px 16px 8px; display:flex; justify-content:flex-end;">
+      <span id="comment-count"></span>
+    </div>
+
+    <div style="padding:0 16px 16px;">
+      <div class="comment-list" id="commentList">
+        <div class="comments-loading">コメントを読み込み中…</div>
+      </div>
+    </div>
+
+  </section>
+
+  </div><!-- /tab-comments -->
+
 </main>
+
+<!-- ── ライトボックス ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <p class="lb-caption" id="lightboxCaption"></p>
+</div>
 
 <!-- ════════════ FOOTER ════════════ -->
 <footer>
@@ -1048,6 +1420,7 @@
 </footer>
 
 <script>
+  /* ── タブ切り替え ── */
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.dataset.tab;
@@ -1056,8 +1429,94 @@
       btn.classList.add('active');
       document.getElementById('tab-' + target).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (target === 'comments' && !window._commentsLoaded) loadComments();
     });
   });
+
+  /* ── ライトボックス ── */
+  function openLightbox(src, caption) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCaption').textContent = caption;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ── コメント読み込み ── */
+  let _allComments = [];
+  let _yearFilter = 'all';
+  let _roleFilter = 'all';
+
+  function badgeClass(name) {
+    if (name.includes('騎手')) return 'jockey';
+    if (name.includes('調教師')) return 'trainer';
+    if (name.includes('ファーム') || name.includes('牧場') || name.includes('空港') || name.includes('しがらき')) return 'farm';
+    return '';
+  }
+
+  function renderComments() {
+    const q = (document.getElementById('commentSearch').value || '').trim().toLowerCase();
+    const list = _allComments.filter(c => {
+      if (_yearFilter !== 'all' && !c.date.startsWith(_yearFilter)) return false;
+      if (_roleFilter === '騎手'   && !c.name.includes('騎手'))  return false;
+      if (_roleFilter === '調教師' && !c.name.includes('調教師')) return false;
+      if (_roleFilter === '助手'   && !c.name.includes('助手'))  return false;
+      if (_roleFilter === 'farm') {
+        const isFarm = c.name.includes('ファーム') || c.name.includes('牧場') || c.name.includes('空港') || c.name.includes('しがらき');
+        if (!isFarm) return false;
+      }
+      if (q && !c.content.toLowerCase().includes(q) && !c.name.toLowerCase().includes(q)) return false;
+      return true;
+    });
+
+    document.getElementById('comment-count').textContent = `${list.length} 件`;
+
+    const html = list.map(c => {
+      const bc = badgeClass(c.name);
+      return `<div class="comment-card">
+        <div class="c-meta">
+          <span class="c-date">${c.date}</span>
+          <span class="comment-name-badge ${bc}">${c.name}</span>
+          ${c.location !== c.name ? `<span class="c-loc">${c.location}</span>` : ''}
+        </div>
+        <div class="c-body">${c.content}</div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('commentList').innerHTML = html || '<p style="color:var(--muted);padding:20px;text-align:center;">該当するコメントはありません</p>';
+  }
+
+  async function loadComments() {
+    try {
+      const res = await fetch('report/comments.json');
+      _allComments = (await res.json()).reverse(); // 新しい順
+      window._commentsLoaded = true;
+      renderComments();
+    } catch(e) {
+      document.getElementById('commentList').innerHTML = '<p style="color:var(--red);padding:20px;text-align:center;">コメントの読み込みに失敗しました</p>';
+    }
+  }
+
+  /* フィルターボタン */
+  document.querySelectorAll('.filter-btn[data-year]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn[data-year]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      _yearFilter = btn.dataset.year;
+      renderComments();
+    });
+  });
+  document.querySelectorAll('.filter-btn[data-role]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn[data-role]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      _roleFilter = btn.dataset.role;
+      renderComments();
+    });
+  });
+  document.getElementById('commentSearch').addEventListener('input', renderComments);
 </script>
 </body>
 </html>
