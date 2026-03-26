@@ -625,22 +625,29 @@
 
     /* ─── TABS ─── */
     .tab-nav {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
       background: var(--navy);
       border-bottom: 3px solid var(--primary);
       position: sticky;
       top: 0;
       z-index: 100;
-      overflow-x: auto;
-      scrollbar-width: none;
     }
-    .tab-nav::-webkit-scrollbar { display: none; }
+    @media (max-width: 499px) {
+      .tab-nav {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .tab-nav::-webkit-scrollbar { display: none; }
+    }
     .tab-btn {
-      padding: 10px 20px;
+      padding: 9px 12px;
       background: none;
       border: none;
       border-right: 1px solid rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
       color: rgba(255,255,255,.65);
       font-size: .84rem;
       font-weight: 600;
@@ -1216,10 +1223,12 @@
 <!-- ════════════ TAB NAV ════════════ -->
 <nav class="tab-nav">
   <button class="tab-btn active" data-tab="overview">📋 概要</button>
+  <button class="tab-btn" data-tab="oshi">💰 推し活</button>
   <button class="tab-btn" data-tab="records">🏁 戦績</button>
+  <button class="tab-btn" data-tab="pedigree">🧬 血統</button>
   <button class="tab-btn" data-tab="analysis">🔍 分析</button>
-  <button class="tab-btn" data-tab="prediction">🎯 次走予想</button>
-  <button class="tab-btn" data-tab="photos">🖼 馬体診断</button>
+  <button class="tab-btn" data-tab="prediction">🎯 予想</button>
+  <button class="tab-btn" data-tab="photos">🖼 馬体</button>
   <button class="tab-btn" data-tab="comments">💬 コメント</button>
 </nav>
 
@@ -1316,6 +1325,11 @@
       <span style="font-size:.82rem; color:var(--text-sub);">総賞金 <strong style="color:var(--primary);">5,318万円</strong></span>
     </div>
   </section>
+
+  </div><!-- /tab-overview -->
+
+  <!-- ── 推し活タブ ── -->
+  <div class="tab-panel" id="tab-oshi">
 
   <!-- ── 一口馬主ダッシュボード ── -->
   <section>
@@ -1565,7 +1579,7 @@
     </div>
   </section>
 
-  </div><!-- /tab-overview -->
+  </div><!-- /tab-oshi -->
 
   <!-- ── 戦績タブ ── -->
   <div class="tab-panel" id="tab-records">
@@ -1662,7 +1676,8 @@
   </div><!-- /tab-records -->
 
   <!-- ── 分析タブ ── -->
-  <div class="tab-panel" id="tab-analysis">
+  <!-- ── 血統タブ ── -->
+  <div class="tab-panel" id="tab-pedigree">
 
   <!-- ── 血統分析 ── -->
   <section>
@@ -1808,6 +1823,11 @@
       </p>
     </div>
   </section>
+
+  </div><!-- /tab-pedigree -->
+
+  <!-- ── 分析タブ ── -->
+  <div class="tab-panel" id="tab-analysis">
 
   <!-- ── 調教・状態分析 ── -->
   <section>
