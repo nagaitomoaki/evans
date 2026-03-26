@@ -1076,6 +1076,114 @@
       font-size: .88rem;
     }
 
+    /* ─── INVESTOR DASHBOARD ─── */
+    .inv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .inv-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .inv-card.inv-accent { border-top-color: #cc9900; }
+    .inv-card.inv-green  { border-top-color: var(--green); }
+    .inv-card.inv-blue   { border-top-color: var(--blue); }
+    .inv-label { font-size: .64rem; color: var(--muted); margin-bottom: 4px; }
+    .inv-value { font-size: 1.28rem; font-weight: 900; color: var(--primary-dark); line-height: 1.1; }
+    .inv-sub   { font-size: .68rem; color: var(--text-sub); margin-top: 3px; }
+    .prize-chart-wrap { margin-top: 12px; }
+    .prize-chart-title { font-size: .76rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .prize-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+      font-size: .76rem;
+    }
+    .prize-row-label { min-width: 110px; color: var(--text-sub); flex-shrink: 0; font-size: .72rem; }
+    .prize-bar-bg { flex: 1; height: 14px; background: var(--border); position: relative; }
+    .prize-bar-fill { height: 100%; background: var(--primary); }
+    .prize-bar-fill.pb-win { background: var(--green); }
+    .prize-bar-fill.pb-place { background: var(--blue); }
+    .prize-val { min-width: 52px; text-align: right; font-size: .72rem; color: var(--text-sub); }
+    .inv-disclaimer {
+      font-size: .68rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 10px;
+      padding-top: 8px;
+      line-height: 1.6;
+    }
+
+    /* ─── OSHI TIMELINE ─── */
+    .oshi-timeline {
+      position: relative;
+      padding-left: 26px;
+      margin-top: 10px;
+    }
+    .oshi-timeline::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary) 0%, var(--border) 100%);
+    }
+    .ot-item {
+      position: relative;
+      margin-bottom: 18px;
+    }
+    .ot-dot {
+      position: absolute;
+      left: -21px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--surface);
+    }
+    .ot-item.ot-birth  .ot-dot { background: #7b2d8b; }
+    .ot-item.ot-grow   .ot-dot { background: var(--blue); }
+    .ot-item.ot-win    .ot-dot { background: var(--green); width:14px; height:14px; left:-22px; top:9px; }
+    .ot-item.ot-hard   .ot-dot { background: var(--red); }
+    .ot-item.ot-future .ot-dot { background: #cc9900; border-style: dashed; }
+    .ot-body {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+    }
+    .ot-item.ot-win   .ot-body { border-left: 3px solid var(--green); }
+    .ot-item.ot-birth .ot-body { border-left: 3px solid #7b2d8b; }
+    .ot-item.ot-future .ot-body { border-left: 3px solid #cc9900; border-style: dashed; }
+    .ot-date  { font-size: .68rem; color: var(--muted); margin-bottom: 2px; }
+    .ot-event { font-size: .88rem; font-weight: 800; color: var(--navy); }
+    .ot-note  { font-size: .76rem; color: var(--text-sub); margin-top: 4px; line-height: 1.65; }
+    .ot-note strong { color: var(--primary-dark); }
+    .ot-photo { margin-top: 8px; }
+    .ot-photo img {
+      width: 100%;
+      max-width: 220px;
+      height: 140px;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    @media (min-width: 560px) {
+      .ot-inner { display: flex; gap: 12px; align-items: flex-start; }
+      .ot-text  { flex: 1; min-width: 0; }
+      .ot-photo { margin-top: 0; flex-shrink: 0; }
+      .ot-photo img { width: 160px; height: 110px; }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       text-align: center;
@@ -1206,6 +1314,254 @@
       <span style="font-size:.82rem; color:var(--text-sub);">平均人気 <strong style="color:var(--primary);">2.8</strong></span>
       <span style="color:var(--border);">|</span>
       <span style="font-size:.82rem; color:var(--text-sub);">総賞金 <strong style="color:var(--primary);">5,318万円</strong></span>
+    </div>
+  </section>
+
+  <!-- ── 一口馬主ダッシュボード ── -->
+  <section>
+    <h2><span class="icon">💰</span>一口馬主ダッシュボード</h2>
+
+    <div class="inv-grid">
+      <div class="inv-card">
+        <p class="inv-label">総獲得賞金</p>
+        <p class="inv-value">5,318<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-sub">19戦3勝の累計</p>
+      </div>
+      <div class="inv-card inv-accent">
+        <p class="inv-label">馬主分配（推定）</p>
+        <p class="inv-value">4,254<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-sub">賞金×80%（JRA規定）</p>
+      </div>
+      <div class="inv-card inv-green">
+        <p class="inv-label">1口分配累計（推定）</p>
+        <p class="inv-value">約4.0<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-sub">800口・クラブ取り分考慮</p>
+      </div>
+      <div class="inv-card inv-blue">
+        <p class="inv-label">維持費累計（推定）</p>
+        <p class="inv-value">約3.0<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-sub">〜1,000円/口/月 × 約30ヶ月</p>
+      </div>
+      <div class="inv-card" style="border-top-color:var(--red);">
+        <p class="inv-label">複勝率</p>
+        <p class="inv-value">58<span style="font-size:.72rem;">%</span></p>
+        <p class="inv-sub">3着内 11回 / 19戦</p>
+      </div>
+      <div class="inv-card" style="border-top-color:#7b2d8b;">
+        <p class="inv-label">平均人気</p>
+        <p class="inv-value">2.8<span style="font-size:.72rem;">番人気</span></p>
+        <p class="inv-sub">陣営からの信頼の証</p>
+      </div>
+    </div>
+
+    <!-- 賞金積み上げバー -->
+    <div class="prize-chart-wrap">
+      <p class="prize-chart-title">📊 主要レース別獲得賞金（推定）</p>
+      <div class="prize-row">
+        <span class="prize-row-label">袖ケ浦特別（2勝C）</span>
+        <div class="prize-bar-bg"><div class="prize-bar-fill pb-win" style="width:100%;"></div></div>
+        <span class="prize-val">約800万円</span>
+      </div>
+      <div class="prize-row">
+        <span class="prize-row-label">秋吉台特別（1勝C）</span>
+        <div class="prize-bar-bg"><div class="prize-bar-fill pb-win" style="width:56%;"></div></div>
+        <span class="prize-val">約450万円</span>
+      </div>
+      <div class="prize-row">
+        <span class="prize-row-label">3着11回（累計）</span>
+        <div class="prize-bar-bg"><div class="prize-bar-fill pb-place" style="width:48%;"></div></div>
+        <span class="prize-val">約1,400万円</span>
+      </div>
+      <div class="prize-row">
+        <span class="prize-row-label">未勝利・その他</span>
+        <div class="prize-bar-bg"><div class="prize-bar-fill" style="width:33%;"></div></div>
+        <span class="prize-val">約2,668万円</span>
+      </div>
+    </div>
+
+    <p class="inv-disclaimer">
+      ※ 口数・維持費・クラブ取り分はいずれも推定値（800口・月次維持費約60万円/馬想定）。正確な数値は東京サラブレッドクラブの会員ページでご確認ください。賞金分配は着順賞金のみの概算で、出走手当・育成手当などは含みません。
+    </p>
+  </section>
+
+  <!-- ── エヴァンス年表 ── -->
+  <section>
+    <h2><span class="icon">📖</span>エヴァンス年表 — 誕生から現在まで</h2>
+
+    <div class="oshi-timeline">
+
+      <!-- 誕生 -->
+      <div class="ot-item ot-birth">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2021年5月4日</p>
+              <p class="ot-event">🐣 誕生 — ノーザンファーム</p>
+              <p class="ot-note">父ロードカナロア × 母レッドアヴァンセ（VM G1 3着）の良血馬として北海道・ノーザンファームで誕生。5月生まれの遅生まれ。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 当歳・育成開始 -->
+      <div class="ot-item ot-grow">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2022年7月〜12月（当歳）</p>
+              <p class="ot-event">🌱 育成開始 — 427kg → 455kg</p>
+              <p class="ot-note">7月に撮影開始。10月にノーザンファーム空港へ移動し急成長。12月末には<strong>眼光が鋭くなり「競走馬らしいピリッとした面」</strong>が表れてきた。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20220708.jpg" alt="2022年7月" loading="lazy"
+                   onclick="openLightbox('img/20220708.jpg','2022年7月8日（当歳）')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1歳成長期 -->
+      <div class="ot-item ot-grow">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2023年1月〜7月（1歳）</p>
+              <p class="ot-event">💪 急成長期 — 455kg → 490kg超</p>
+              <p class="ot-note">1歳春にかけて<strong>トモ（後肢）の筋肉量が顕著に増加</strong>。胸部の厚みも増し、ロードカナロアらしいがっしりした体型へ変貌。乗り馴らしを経て調教師へのアピールが始まる。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20230531.jpg" alt="2023年5月" loading="lazy"
+                   onclick="openLightbox('img/20230531.jpg','2023年5月31日（1歳）')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 入厩・デビュー準備 -->
+      <div class="ot-item ot-grow">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2023年秋〜2024年春（1〜2歳）</p>
+              <p class="ot-event">🏋️ 東田明士厩舎（栗東）入厩・デビュー準備</p>
+              <p class="ot-note">栗東・東田明士厩舎に入厩。ゲート練習・追い切りを重ねデビューへ向け調整。<strong>馬体重508kgまで成長</strong>し、貫禄が増した。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20240405.jpg" alt="2024年4月" loading="lazy"
+                   onclick="openLightbox('img/20240405.jpg','2024年4月5日')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 初勝利 -->
+      <div class="ot-item ot-win">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2024年</p>
+              <p class="ot-event">🏆 初勝利 — 3歳未勝利戦</p>
+              <p class="ot-note">デビューから数戦を経て<strong>待望の初勝利</strong>を挙げる。芝・短距離での適性を確認。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20240913.jpg" alt="2024年9月" loading="lazy"
+                   onclick="openLightbox('img/20240913.jpg','2024年9月13日')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 秋吉台特別 -->
+      <div class="ot-item ot-win">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2025年2月22日</p>
+              <p class="ot-event">🏆 秋吉台特別 1着 — 1勝クラス突破</p>
+              <p class="ot-note">小倉・芝1200m。荻野極騎手騎乗で<strong>1勝クラスを突破</strong>。冬小倉の締まった良馬場（クッション値9.0〜9.5）が合い、力強い末脚を披露。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20250110.jpg" alt="2025年1月" loading="lazy"
+                   onclick="openLightbox('img/20250110.jpg','2025年1月10日')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 袖ケ浦特別 -->
+      <div class="ot-item ot-win">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2025年4月19日</p>
+              <p class="ot-event">🏆 袖ケ浦特別 1着 1:07.2 — 2勝クラス突破</p>
+              <p class="ot-note">中山・芝1200m。<strong>J.モレイラ騎手</strong>を鞍上に迎え1:07.2の好時計で連勝。クッション値10.3・含水率11%の高速馬場で自己ベストを更新。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20250516.jpg" alt="2025年5月" loading="lazy"
+                   onclick="openLightbox('img/20250516.jpg','2025年5月16日')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3勝クラス苦戦 -->
+      <div class="ot-item ot-hard">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2025年6月〜10月</p>
+              <p class="ot-event">😓 3勝クラスの壁 — 佐世保S3着・道頓堀S9着・北陸S6着</p>
+              <p class="ot-note">道頓堀S（阪神・9月）は1番人気で<strong>まさかの9着</strong>。含水率13.6%の高水分馬場と精神面の不安定さが重なり大敗。3勝クラスの壁に苦しむ時期。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20251212.jpg" alt="2025年12月" loading="lazy"
+                   onclick="openLightbox('img/20251212.jpg','2025年12月12日')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 復調 -->
+      <div class="ot-item ot-win">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2026年3月1日</p>
+              <p class="ot-event">✨ アクアマリンS 3着 — 復調の兆し</p>
+              <p class="ot-note">中山・芝1200m・3勝C定量。488kg（-6kg）の絞れた馬体で<strong>復調気配を確認</strong>。坂で外に寄れながらも粘り、陣営の状態上向き判断へ。</p>
+            </div>
+            <div class="ot-photo">
+              <img src="img/20260306.jpg" alt="2026年3月" loading="lazy"
+                   onclick="openLightbox('img/20260306.jpg','2026年3月6日（最新）')">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 次走（未来） -->
+      <div class="ot-item ot-future">
+        <div class="ot-dot"></div>
+        <div class="ot-body">
+          <div class="ot-inner">
+            <div class="ot-text">
+              <p class="ot-date">2026年4月下旬（予定）</p>
+              <p class="ot-event">🎯 朱雀ステークス（京都・芝1200m）</p>
+              <p class="ot-note"><strong>血統・馬場・コース全てが揃う3勝クラス突破の正念場。</strong>平坦外回り×春の高クッション値×定量戦。ここを勝てば夏の重賞路線へ。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
