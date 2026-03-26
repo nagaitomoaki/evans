@@ -364,6 +364,109 @@
     }
     .ped-card p strong { color: var(--primary-dark); }
 
+    /* ─── BLOODLINE DEEP DIVE ─── */
+    .bloodline-note {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary-dark);
+      padding: 12px 16px;
+      margin-top: 10px;
+    }
+    .bloodline-note h3 {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: .04em;
+    }
+    .bloodline-note p {
+      font-size: .8rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+    .bloodline-note p strong { color: var(--primary-dark); }
+    .ancestry-chain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px 0;
+      font-size: .74rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .ancestry-chain .anc-name { color: var(--text); font-weight: 700; }
+    .ancestry-chain .anc-arrow { margin: 0 4px; color: var(--border); }
+    .ancestry-chain .anc-key { color: var(--primary-dark); font-weight: 800; }
+
+    /* ─── SIMILAR HORSES ─── */
+    .similar-horse-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .similar-horse-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--blue);
+      padding: 14px;
+    }
+    .similar-horse-card .sh-name {
+      font-size: .98rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .similar-horse-card .sh-pedigree {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .similar-horse-card p {
+      font-size: .8rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+    }
+    .similar-horse-card p strong { color: var(--primary-dark); }
+    .apt-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .apt-tag {
+      font-size: .68rem;
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-sub);
+    }
+    .apt-tag.apt-match {
+      background: #fff3e0;
+      border-color: #f0cca0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .apt-summary {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+    .apt-summary h3 {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .apt-summary p {
+      font-size: .82rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+    .apt-summary p strong { color: var(--primary-dark); }
+
     /* ─── ANALYSIS CARDS ─── */
     .analysis-grid {
       display: grid;
@@ -1124,10 +1227,12 @@
   <!-- ── 血統分析 ── -->
   <section>
     <h2><span class="icon">🧬</span>血統</h2>
+
+    <!-- 配合サマリー -->
     <div style="background:var(--surface2); border:1px solid var(--border); padding:12px 18px; display:flex; flex-wrap:wrap; gap:4px 0; font-size:.84rem; align-items:center;">
       <span style="color:var(--muted); font-size:.72rem; margin-right:6px;">父</span><strong style="color:var(--primary-dark);">ロードカナロア</strong>
       <span style="color:var(--border); margin:0 10px;">×</span>
-      <span style="color:var(--muted); font-size:.72rem; margin-right:6px;">母</span><strong style="color:var(--text);">レッドアヴァンセ</strong><span style="color:var(--muted); font-size:.78rem; margin-left:5px;">（VM G1 3着）</span>
+      <span style="color:var(--muted); font-size:.72rem; margin-right:6px;">母</span><strong style="color:var(--text);">レッドアヴァンセ</strong><span style="color:var(--muted); font-size:.78rem; margin-left:5px;">（ヴィクトリアマイル G1 3着）</span>
       <span style="color:var(--border); margin:0 10px;">×</span>
       <span style="color:var(--muted); font-size:.72rem; margin-right:6px;">母父</span><strong style="color:var(--text);">ディープインパクト</strong>
     </div>
@@ -1136,6 +1241,132 @@
       <span style="background:var(--surface2); color:var(--text-sub); border:1px solid var(--border); padding:3px 10px;">スピード×末脚持続力</span>
       <span style="background:var(--surface2); color:var(--text-sub); border:1px solid var(--border); padding:3px 10px;">Lyphard 5×4 インブリード</span>
       <span style="background:var(--surface2); color:var(--text-sub); border:1px solid var(--border); padding:3px 10px;">ノーザンファーム生産</span>
+    </div>
+
+    <!-- 父系深掘り -->
+    <div class="pedigree-box" style="margin-top:12px;">
+      <div class="ped-card">
+        <h3>父系 — ロードカナロア</h3>
+        <div class="ped-name">ロードカナロア</div>
+        <div class="ancestry-chain">
+          <span class="anc-name">キングカメハメハ</span><span class="anc-arrow">→</span>
+          <span class="anc-name">キングマンボ</span><span class="anc-arrow">→</span>
+          <span class="anc-name">Mr. Prospector</span><span class="anc-arrow">→</span>
+          <span class="anc-name">Raise a Native</span><span class="anc-arrow">→</span>
+          <span class="anc-name">Native Dancer</span><span class="anc-arrow">→</span>
+          <span class="anc-key">Nearco</span>
+        </div>
+        <p style="margin-top:8px;">
+          香港スプリント連覇など国際G1を6勝した日本最強スプリンター。産駒はスピードと末脚持続力を兼備し、<strong>芝1200〜1400m</strong>で高い成績を誇る。父系は米国主流のMr. Prospectorを経由するが、その根幹はヨーロッパの怪物種牡馬<strong>Nearco</strong>に行き着く。
+        </p>
+      </div>
+      <div class="ped-card">
+        <h3>母父系 — ディープインパクト</h3>
+        <div class="ped-name">ディープインパクト</div>
+        <div class="ancestry-chain">
+          <span class="anc-name">サンデーサイレンス</span><span class="anc-arrow">→</span>
+          <span class="anc-name">Halo</span><span class="anc-arrow">→</span>
+          <span class="anc-name">Hail to Reason</span><span class="anc-arrow">→</span>
+          <span class="anc-key">Turn-to</span>
+          <span style="margin-left:8px; color:var(--border);">|</span>
+          <span style="margin-left:8px;" class="anc-name">母系：Lyphard</span>
+        </div>
+        <p style="margin-top:8px;">
+          母父に入ることでロードカナロアのスピードに<strong>スタミナと持続力を上乗せ</strong>。アーモンドアイ（ロードカナロア×フサイチパンドラ、母父Seeking the Gold）でも実証済みのトップ配合。母レッドアヴァンセ自身がヴィクトリアマイルG1で3着と高い競走能力を持ち、<strong>牝系の素質は確か</strong>。
+        </p>
+      </div>
+    </div>
+
+    <!-- テスコボーイ系との繋がり -->
+    <div class="bloodline-note" style="margin-top:10px;">
+      <h3>テスコボーイ系統との血統的繋がり — 日本スプリント血統の源流</h3>
+      <div class="ancestry-chain" style="margin-bottom:8px;">
+        <span class="anc-key">Nearco</span><span class="anc-arrow">→</span>
+        <span class="anc-name">Nasrullah</span><span class="anc-arrow">→</span>
+        <span class="anc-name">Princely Gift</span><span class="anc-arrow">→</span>
+        <span class="anc-name">テスコボーイ</span><span class="anc-arrow">→</span>
+        <span class="anc-name">サクラユタカオー</span><span class="anc-arrow">→</span>
+        <span class="anc-name">サクラバクシンオー</span>
+      </div>
+      <p>
+        テスコボーイ（英国産・1963年生）は1960〜70年代の日本競馬を席巻し、<strong>「日本スプリント血統の礎」</strong>を確立した大種牡馬。その産駒サクラユタカオー、孫サクラバクシンオーへと続く系統は「小回り高速馬場・芝1200m」への特別な適性を日本競馬に根付かせた。<br><br>
+        ロードカナロアの父系もNative Dancer → Nearcoへと遡り、<strong>テスコボーイと同じNearcoを共通祖先</strong>に持つ。経路は異なるものの（Nearco → Nasrullah → テスコボーイ系 ／ Nearco → Native Dancer → Mr. Prospector系）、Nearcoが日本の高速馬場に授けた「鋭いスピードの維持力」はロードカナロア産駒にも脈々と受け継がれている。レッドエヴァンスが示す中山・京都での高速時計への適性は、この血統的背景とも合致する。
+      </p>
+    </div>
+
+    <!-- Lyphardインブリード -->
+    <div class="bloodline-note" style="margin-top:10px; border-left-color: var(--blue);">
+      <h3>Lyphard 5×4 インブリード — 芝適性とリズムの源泉</h3>
+      <p>
+        <strong>Lyphard</strong>（Northern Dancer系）は父ロードカナロアの母系（レディブラッサムの血脈）と、母父ディープインパクトの母ウインドインハーヘア（by Alzao = Lyphard系）の両方から5代・4代目に入る二重インブリード。Northern Dancerゆずりの<strong>均整のとれたストライドと芝への高い適性</strong>を増幅させており、レッドエヴァンスが良馬場の芝で安定したパフォーマンスを発揮する根拠となっている。重馬場では末脚が削がれる傾向もLyphardインブリードの特性として理解できる。
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 近似血統馬からの適性診断 ── -->
+  <section>
+    <h2><span class="icon">🔬</span>近似血統馬からの適性診断</h2>
+    <p style="font-size:.82rem; color:var(--muted); margin-bottom:12px;">
+      ロードカナロア産駒で血統構成が近い馬の成績パターンを参照し、レッドエヴァンスの適性を診断する。
+    </p>
+
+    <div class="similar-horse-grid">
+
+      <!-- ブレイディヴェーグ -->
+      <div class="similar-horse-card">
+        <div class="sh-name">ブレイディヴェーグ</div>
+        <div class="sh-pedigree">ロードカナロア × ソーマジック（母父ハービンジャー）</div>
+        <p>
+          2023年スプリンターズS（中山・G1）を制した現役最強クラスのスプリンター。母父ハービンジャーの欧州的持続力がロードカナロアのスピードと融合し、<strong>直線での末脚持続勝負</strong>に強みを発揮。中山・京都など広いコースの1200mを得意とし、小回りコースより直線が長いトラックで本領を発揮する点がレッドエヴァンスと共通する。
+        </p>
+        <div class="apt-tags">
+          <span class="apt-tag apt-match">芝1200m</span>
+          <span class="apt-tag apt-match">直線持続力</span>
+          <span class="apt-tag apt-match">良〜稍重</span>
+          <span class="apt-tag">中山○</span>
+          <span class="apt-tag">京都△→◎</span>
+        </div>
+      </div>
+
+      <!-- ダノンスマッシュ -->
+      <div class="similar-horse-card">
+        <div class="sh-name">ダノンスマッシュ</div>
+        <div class="sh-pedigree">ロードカナロア × ラヴズオンリーミー（母父Storm Cat）</div>
+        <p>
+          高松宮記念（G1）・香港スプリント（G1）など短距離G1を複数制覇した純スプリンター。Storm Cat系の母父が加わることで<strong>スタートの速さと道中の位置取り力</strong>が向上。ロードカナロア産駒の典型例として「速い時計・良馬場・1200m」への強い適性を示した。レッドエヴァンスも袖ケ浦特別で1:07.2の好時計を叩き出しており、時計適性は共通している。
+        </p>
+        <div class="apt-tags">
+          <span class="apt-tag apt-match">芝1200m</span>
+          <span class="apt-tag apt-match">高速時計対応</span>
+          <span class="apt-tag apt-match">良馬場</span>
+          <span class="apt-tag">先行〜差し</span>
+        </div>
+      </div>
+
+      <!-- アーモンドアイ（参考・距離適性の違い） -->
+      <div class="similar-horse-card" style="border-top-color: var(--muted);">
+        <div class="sh-name">アーモンドアイ <span style="font-size:.72rem; font-weight:400; color:var(--muted);">（参考・距離比較）</span></div>
+        <div class="sh-pedigree">ロードカナロア × フサイチパンドラ（母父Seeking the Gold）</div>
+        <p>
+          ジャパンC・天皇賞秋など芝中長距離G1を9勝。母父にSeeking the Gold（Mr. Prospector系）を持ち、<strong>スタミナ寄りの配合</strong>が中長距離での持続力勝負を可能にした。レッドエヴァンスは母父がディープインパクト（よりスピード＋スタミナ均衡型）であるため、アーモンドアイより短距離寄りに発現しており、<strong>1200〜1400mが主戦場</strong>という診断を支持する。
+        </p>
+        <div class="apt-tags">
+          <span class="apt-tag">芝1600〜2400m</span>
+          <span class="apt-tag">中長距離型</span>
+          <span class="apt-tag" style="color:var(--red); border-color:var(--red);">レッドエヴァンスとは距離適性が異なる</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 診断まとめ -->
+    <div class="apt-summary">
+      <h3>📋 血統診断まとめ — レッドエヴァンスの適性</h3>
+      <p>
+        ブレイディヴェーグ・ダノンスマッシュとの比較から導かれる共通点は<strong>「芝1200m・良〜稍重・直線が長いコース・中4週以上の余裕あるローテーション」</strong>。<br><br>
+        テスコボーイ→サクラバクシンオーが確立した「日本スプリント適性」をNearco経由で受け継ぐロードカナロア系として、<strong>高速馬場の持続力勝負</strong>に最もアドバンテージが出る。Lyphard二重インブリードが芝適性をさらに強化している一方、重馬場・小回りコースでは末脚が削がれる傾向がある。<br><br>
+        次走・朱雀S（京都外回り・定量）は<strong>「平坦・直線長・良馬場」という血統的最適条件</strong>が揃う舞台であり、血統面からも最上位の評価ができる。
+      </p>
     </div>
   </section>
 
