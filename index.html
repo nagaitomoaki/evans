@@ -229,6 +229,45 @@
       color: var(--text);
     }
 
+    /* ─── PROFILE WITH PHOTO ─── */
+    .profile-with-photo {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .profile-best-shot {
+      flex-shrink: 0;
+      width: 160px;
+    }
+    .profile-best-shot img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--border);
+    }
+    .profile-best-shot .photo-caption {
+      font-size: .68rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 4px 0;
+    }
+    .profile-with-photo .profile-grid {
+      flex: 1;
+      min-width: 0;
+    }
+    @media (max-width: 480px) {
+      .profile-with-photo {
+        flex-direction: column;
+      }
+      .profile-best-shot {
+        width: 100%;
+      }
+      .profile-best-shot img {
+        aspect-ratio: 4/3;
+      }
+    }
+
     /* ─── STATS ROW ─── */
     .stats-row {
       display: grid;
@@ -919,6 +958,11 @@
   <!-- ── プロフィール ── -->
   <section>
     <h2><span class="icon">🐴</span>基本プロフィール</h2>
+    <div class="profile-with-photo">
+      <div class="profile-best-shot">
+        <img src="img/best.jpg" alt="レッドエヴァンス ベストショット">
+        <p class="photo-caption">ベストショット</p>
+      </div>
     <div class="profile-grid">
       <div class="profile-item">
         <p class="p-label">馬名</p>
@@ -961,6 +1005,7 @@
         <p class="p-value">3勝クラス</p>
       </div>
     </div>
+    </div><!-- /profile-with-photo -->
   </section>
 
   <!-- ── 通算成績 ── -->
