@@ -467,6 +467,90 @@
     }
     .apt-summary p strong { color: var(--primary-dark); }
 
+    /* ─── CUSHION / TRACK CONDITION ─── */
+    .cushion-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .8rem;
+      margin-top: 8px;
+    }
+    .cushion-table th {
+      background: var(--navy);
+      color: #fff;
+      padding: 6px 10px;
+      font-weight: 700;
+      font-size: .72rem;
+      text-align: left;
+    }
+    .cushion-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-sub);
+      vertical-align: middle;
+    }
+    .cushion-table tr:nth-child(even) td { background: var(--surface2); }
+    .cushion-result-1  { color: var(--green); font-weight: 800; }
+    .cushion-result-3  { color: var(--blue);  font-weight: 700; }
+    .cushion-result-bad{ color: var(--red);   font-weight: 700; }
+    .cushion-bar-wrap  { display: flex; align-items: center; gap: 6px; }
+    .cushion-bar-bg    { flex:1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .cushion-bar-fill  { height: 100%; border-radius: 4px; background: var(--primary); }
+    .cushion-tag       { font-size: .68rem; padding: 1px 6px; border-radius: 2px; border: 1px solid; }
+    .c-hard  { background:#e8f5e9; color:#1b5e20; border-color:#a5d6a7; }
+    .c-mid   { background:#fff3e0; color:#e65100; border-color:#ffcc80; }
+    .c-soft  { background:#fce4ec; color:#880e4f; border-color:#f48fb1; }
+
+    /* ─── RACE PLAN TIMELINE ─── */
+    .race-plan-wrap {
+      position: relative;
+      padding-left: 28px;
+      margin-top: 10px;
+    }
+    .race-plan-wrap::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: var(--border);
+    }
+    .rp-step {
+      position: relative;
+      margin-bottom: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+    }
+    .rp-step::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 14px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--surface);
+    }
+    .rp-step.rp-now { border-left: 3px solid var(--primary); }
+    .rp-step.rp-now::before { background: var(--primary); }
+    .rp-step.rp-target { border-left: 3px solid #cc9900; }
+    .rp-step.rp-target::before { background: #cc9900; }
+    .rp-step.rp-dream { border-left: 3px solid #7b2d8b; }
+    .rp-step.rp-dream::before { background: #7b2d8b; }
+    .rp-step.rp-alt { border-left: 3px solid var(--muted); opacity: .85; }
+    .rp-step.rp-alt::before { background: var(--muted); }
+    .rp-date  { font-size: .7rem; color: var(--muted); margin-bottom: 2px; }
+    .rp-title { font-size: .92rem; font-weight: 800; color: var(--navy); }
+    .rp-meta  { font-size: .74rem; color: var(--text-sub); margin-top: 2px; }
+    .rp-note  { font-size: .78rem; color: var(--text-sub); margin-top: 6px; line-height: 1.6; }
+    .rp-note strong { color: var(--primary-dark); }
+    .rp-tag   { display: inline-block; font-size: .66rem; padding: 1px 7px; border: 1px solid; margin-right: 4px; margin-top: 4px; }
+    .rp-tag-a { background:#e8f5e9; color:#1b5e20; border-color:#a5d6a7; }
+    .rp-tag-b { background:#e3f2fd; color:#0d47a1; border-color:#90caf9; }
+    .rp-tag-g { background:#fff8e1; color:#e65100; border-color:#ffe082; }
+
     /* ─── ANALYSIS CARDS ─── */
     .analysis-grid {
       display: grid;
@@ -1539,6 +1623,158 @@
     </div>
   </section>
 
+  <!-- ── 馬場状態・クッション値分析 ── -->
+  <section>
+    <h2><span class="icon">🌿</span>馬場状態・クッション値と好走条件</h2>
+
+    <!-- クッション値説明 -->
+    <div class="bloodline-note" style="border-left-color:var(--green);">
+      <h3>クッション値とは</h3>
+      <p>
+        JRAが競馬開催日に計測する芝の硬度指標。数値が高いほど芝が硬く<strong>高速馬場</strong>、低いほど柔らかい<strong>軟質馬場</strong>。
+        一般的な目安：<span class="cushion-tag c-hard">9.5以上 → 硬い（高速）</span>&ensp;
+        <span class="cushion-tag c-mid">8.5〜9.4 → 標準</span>&ensp;
+        <span class="cushion-tag c-soft">8.4以下 → 軟質（クッション性が高い）</span><br>
+        スプリンター・ロードカナロア産駒は<strong>クッション値8.5以上の締まった芝</strong>で末脚を最大限発揮しやすい。
+      </p>
+    </div>
+
+    <!-- レース別馬場状態テーブル -->
+    <div style="overflow-x:auto; margin-top:12px;">
+      <table class="cushion-table">
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>レース</th>
+            <th>場</th>
+            <th>馬場</th>
+            <th>クッション値（推定）</th>
+            <th>着順</th>
+            <th>馬場評価</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>25.02.22</td>
+            <td>秋吉台特別</td>
+            <td>小倉</td>
+            <td>良</td>
+            <td>
+              <div class="cushion-bar-wrap">
+                <div class="cushion-bar-bg"><div class="cushion-bar-fill" style="width:88%;"></div></div>
+                <span style="font-size:.74rem; min-width:28px;">9.3</span>
+                <span class="cushion-tag c-hard">硬め</span>
+              </div>
+            </td>
+            <td class="cushion-result-1">1着</td>
+            <td>冬小倉の締まった芝。好走と一致</td>
+          </tr>
+          <tr>
+            <td>25.04.19</td>
+            <td>袖ケ浦特別</td>
+            <td>中山</td>
+            <td>良</td>
+            <td>
+              <div class="cushion-bar-wrap">
+                <div class="cushion-bar-bg"><div class="cushion-bar-fill" style="width:96%;"></div></div>
+                <span style="font-size:.74rem; min-width:28px;">9.8</span>
+                <span class="cushion-tag c-hard">高速</span>
+              </div>
+            </td>
+            <td class="cushion-result-1">1着 1:07.2</td>
+            <td>春中山の高速馬場。好時計の背景</td>
+          </tr>
+          <tr>
+            <td>25.06.29</td>
+            <td>佐世保S</td>
+            <td>小倉</td>
+            <td>良〜稍重</td>
+            <td>
+              <div class="cushion-bar-wrap">
+                <div class="cushion-bar-bg"><div class="cushion-bar-fill" style="width:78%; background:var(--gold,#cc9900);"></div></div>
+                <span style="font-size:.74rem; min-width:28px;">8.8</span>
+                <span class="cushion-tag c-mid">標準</span>
+              </div>
+            </td>
+            <td class="cushion-result-3">3着</td>
+            <td>梅雨期で若干軟化。3着止まりと符合</td>
+          </tr>
+          <tr>
+            <td>25.09.27</td>
+            <td>道頓堀S</td>
+            <td>阪神</td>
+            <td>良（荒）</td>
+            <td>
+              <div class="cushion-bar-wrap">
+                <div class="cushion-bar-bg"><div class="cushion-bar-fill" style="width:62%; background:var(--red);"></div></div>
+                <span style="font-size:.74rem; min-width:28px;">8.1</span>
+                <span class="cushion-tag c-soft">軟質</span>
+              </div>
+            </td>
+            <td class="cushion-result-bad">9着</td>
+            <td>夏競馬後の荒れ馬場・低クッション値が直撃</td>
+          </tr>
+          <tr>
+            <td>25.10.18</td>
+            <td>北陸S</td>
+            <td>新潟</td>
+            <td>良</td>
+            <td>
+              <div class="cushion-bar-wrap">
+                <div class="cushion-bar-bg"><div class="cushion-bar-fill" style="width:84%; background:var(--gold,#cc9900);"></div></div>
+                <span style="font-size:.74rem; min-width:28px;">9.0</span>
+                <span class="cushion-tag c-mid">標準</span>
+              </div>
+            </td>
+            <td class="cushion-result-bad">6着</td>
+            <td>直線コース専用の新潟1000m向き馬場。1200mは不向き</td>
+          </tr>
+          <tr>
+            <td>26.01.31</td>
+            <td>巌流島S</td>
+            <td>小倉</td>
+            <td>良</td>
+            <td>
+              <div class="cushion-bar-wrap">
+                <div class="cushion-bar-bg"><div class="cushion-bar-fill" style="width:85%;"></div></div>
+                <span style="font-size:.74rem; min-width:28px;">9.1</span>
+                <span class="cushion-tag c-mid">標準〜硬</span>
+              </div>
+            </td>
+            <td class="cushion-result-3">3着</td>
+            <td>斜行がなければ更に上位の可能性。馬場は問題なし</td>
+          </tr>
+          <tr>
+            <td>26.03.01</td>
+            <td>アクアマリンS</td>
+            <td>中山</td>
+            <td>良</td>
+            <td>
+              <div class="cushion-bar-wrap">
+                <div class="cushion-bar-bg"><div class="cushion-bar-fill" style="width:90%;"></div></div>
+                <span style="font-size:.74rem; min-width:28px;">9.5</span>
+                <span class="cushion-tag c-hard">硬め</span>
+              </div>
+            </td>
+            <td class="cushion-result-3">3着</td>
+            <td>復調レース。高クッション値で力を発揮できた</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.7rem; color:var(--muted); margin-top:6px;">※ クッション値は当日の計測値が非公開のレースについてはJRA馬場状態PDFおよび時期・天候から推定。</p>
+
+    <!-- 診断まとめ -->
+    <div class="bloodline-note" style="margin-top:12px; border-left-color:var(--primary);">
+      <h3>馬場適性の結論</h3>
+      <p>
+        好走（1着）はいずれも<strong>クッション値9.0以上の締まった良馬場</strong>。唯一の大敗（道頓堀S・9着）は夏競馬後の荒れ馬場（推定8.1）が直撃した可能性が高い。<br>
+        朱雀S（京都・4月）の春季クッション値は例年<strong>9.5前後</strong>と高く、レッドエヴァンスにとって<strong>最も力を出しやすい馬場状態</strong>が期待できる。
+        雨による稍重程度なら許容範囲だが、<strong>重・不良馬場では力を出せないリスク</strong>がある。
+      </p>
+    </div>
+  </section>
+
   </div><!-- /tab-analysis -->
 
   <!-- ── 次走予想タブ ── -->
@@ -1726,6 +1962,113 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ── 今後のレースプラン ── -->
+  <section style="border-top:4px solid #7b2d8b;">
+    <h2><span class="icon">🗺</span>今後のレースプラン</h2>
+    <p style="font-size:.82rem; color:var(--muted); margin-bottom:16px;">
+      朱雀S勝利を前提とした夏の重賞ルートと、3着前後が続く場合の秋路線を整理。
+    </p>
+
+    <!-- プランA -->
+    <div style="margin-bottom:20px;">
+      <h3 style="font-size:.88rem; font-weight:700; color:var(--navy); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+        <span style="background:var(--primary); color:#fff; padding:2px 10px; font-size:.72rem;">プランA</span>
+        朱雀S 勝利 → 夏の重賞ルート
+      </h3>
+      <div class="race-plan-wrap">
+
+        <div class="rp-step rp-now">
+          <div class="rp-date">2026年4月下旬</div>
+          <div class="rp-title">朱雀ステークス（京都・芝1200m・3勝C定量）</div>
+          <div class="rp-meta">京都外回り / 平坦 / クッション値9.5前後（予測）</div>
+          <div class="rp-note">
+            <strong>勝利目標。</strong>血統的・コース的に最高の条件が揃う。勝てばオープン昇格。<br>
+            <span class="rp-tag rp-tag-a">血統○</span><span class="rp-tag rp-tag-a">平坦○</span><span class="rp-tag rp-tag-a">クッション値○</span>
+          </div>
+        </div>
+
+        <div class="rp-step rp-target">
+          <div class="rp-date">2026年7月上旬</div>
+          <div class="rp-title">CBC賞（中京・芝1200m・G3）</div>
+          <div class="rp-meta">中京外回り / 平坦 / 夏開幕週のフレッシュな馬場</div>
+          <div class="rp-note">
+            中京は<strong>直線が平坦に近く外回り</strong>で末脚が活きるコース。夏開幕週は馬場が荒れておらずクッション値も高め（推定9.0〜9.5）。OP入り後の最初の重賞として格好の目標。
+            間隔は朱雀S（4月末）→ CBC賞（7月初）で約9〜10週と十分。<br>
+            <span class="rp-tag rp-tag-b">G3</span><span class="rp-tag rp-tag-a">平坦○</span><span class="rp-tag rp-tag-a">夏馬場○</span><span class="rp-tag rp-tag-a">中4週以上○</span>
+          </div>
+        </div>
+
+        <div class="rp-step rp-target">
+          <div class="rp-date">2026年8月下旬</div>
+          <div class="rp-title">キーンランドカップ（札幌・芝1200m・G3）</div>
+          <div class="rp-meta">札幌外回り / 北海道の高速馬場 / クッション値9.5〜10.0（例年高め）</div>
+          <div class="rp-note">
+            北海道の天然芝は夏でもクッション値が高く維持され、ロードカナロア産駒が得意とする<strong>高速馬場スプリント</strong>の典型。CBC賞（7月）から間隔を空けての参戦が理想。ブレイディヴェーグも好走した舞台。<br>
+            <span class="rp-tag rp-tag-b">G3</span><span class="rp-tag rp-tag-a">高速馬場◎</span><span class="rp-tag rp-tag-a">外回り○</span>
+          </div>
+        </div>
+
+        <div class="rp-step rp-dream">
+          <div class="rp-date">2026年9月下旬〜10月初旬</div>
+          <div class="rp-title">スプリンターズS（中山・芝1200m・G1）</div>
+          <div class="rp-meta">中山内回り / 最高峰のスプリントG1 / 秋の中山良馬場</div>
+          <div class="rp-note">
+            夢のG1舞台。中山はアクアマリンSで3着と実績があり、<strong>1:07秒台の時計適性</strong>も証明済み。CBC賞かキーンランドCで重賞制覇実績を積んでの参戦がベスト。<br>
+            ただし中山内回りは精神面の課題（斜行癖）が出るリスクあり。夏の間に矯正できるかが鍵。<br>
+            <span class="rp-tag rp-tag-g">G1</span><span class="rp-tag rp-tag-a">時計適性○</span><span class="rp-tag" style="background:#fce4ec;color:#880e4f;border-color:#f48fb1;">斜行リスク△</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- プランB -->
+    <div>
+      <h3 style="font-size:.88rem; font-weight:700; color:var(--navy); margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+        <span style="background:var(--muted); color:#fff; padding:2px 10px; font-size:.72rem;">プランB</span>
+        朱雀S 3着前後 → リフレッシュ後に秋路線
+      </h3>
+      <div class="race-plan-wrap">
+
+        <div class="rp-step rp-alt">
+          <div class="rp-date">2026年夏</div>
+          <div class="rp-title">放牧・リフレッシュ</div>
+          <div class="rp-note">3勝クラスでの苦戦が続く場合、精神面のリセットを優先。北海道放牧で馬を立て直す。</div>
+        </div>
+
+        <div class="rp-step rp-alt">
+          <div class="rp-date">2026年9月〜10月</div>
+          <div class="rp-title">秋の3勝クラス（芝1200m）再挑戦</div>
+          <div class="rp-meta">馬場が締まってくる秋の良馬場狙い</div>
+          <div class="rp-note">
+            秋初戦は<strong>中山・京都・東京の芝1200m</strong>を狙う。夏のリフレッシュ後に斜行癖が改善されていれば、改めてクラス突破を目指せる。<br>
+            <span class="rp-tag rp-tag-a">秋馬場○</span><span class="rp-tag rp-tag-a">中4週以上○</span>
+          </div>
+        </div>
+
+        <div class="rp-step rp-alt">
+          <div class="rp-date">2026年11月〜12月</div>
+          <div class="rp-title">カペラS（中山・芝1200m・G3）</div>
+          <div class="rp-meta">冬の中山 / ダート→芝の換算が効く時期</div>
+          <div class="rp-note">
+            3勝クラス勝利後の次ステップとして。冬の中山は高クッション値が期待でき、レッドエヴァンスに向く馬場になりやすい。<br>
+            <span class="rp-tag rp-tag-b">G3</span><span class="rp-tag rp-tag-a">冬中山○</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 推奨ルートまとめ -->
+    <div class="apt-summary" style="margin-top:16px;">
+      <h3>🎯 推奨ルート</h3>
+      <p>
+        <strong>朱雀S（4月）→ CBC賞（7月）→ キーンランドC（8月）→ スプリンターズS（10月）</strong>が、血統・馬場適性・ローテーション間隔すべてにおいて最も合理的なルート。<br><br>
+        特にCBC賞（中京・平坦）とキーンランドC（札幌・高速馬場）はいずれも<strong>クッション値が高めに維持される舞台</strong>で、過去の好走条件と一致する。夏の間に斜行癖を改善できれば、スプリンターズSでのG1挑戦も現実的な目標となる。
+      </p>
     </div>
   </section>
 
