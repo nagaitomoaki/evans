@@ -699,7 +699,7 @@
     .header-photo:nth-child(1) { animation-delay:  0s; }
     .header-photo:nth-child(2) { animation-delay:  5s; }
     .header-photo:nth-child(3) { animation-delay: 10s; }
-    .header-photo:nth-child(4) { animation-delay: 15s; }
+    .header-photo:nth-child(4) { animation-delay: 15s; object-position: right top; }
     @keyframes header-photo-cycle {
       0%       { opacity: 0; }
       5%       { opacity: 1; }
@@ -1155,6 +1155,25 @@
       line-height: 1.6;
     }
 
+    /* ─── ROI SECTION ─── */
+    .roi-table { width: 100%; border-collapse: collapse; font-size: .76rem; margin-top: 8px; }
+    .roi-table td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+    .roi-table td:last-child { text-align: right; font-weight: 700; }
+    .roi-table tr.roi-total td { background: var(--surface2); font-weight: 700; }
+    .roi-table tr.roi-income td { color: var(--green); }
+    .roi-table tr.roi-result td { font-size: .9rem; font-weight: 900; color: var(--primary-dark); }
+    .roi-scenario { margin-top: 8px; }
+    .roi-s-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: .74rem; }
+    .roi-s-label { min-width: 130px; flex-shrink: 0; color: var(--text-sub); }
+    .roi-s-bar-wrap { flex: 1; height: 20px; background: var(--border); position: relative; }
+    .roi-s-bar { height: 100%; background: var(--primary); display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: .68rem; font-weight: 700; color: #fff; white-space: nowrap; }
+    .roi-s-bar.roi-s-mid  { background: var(--blue); }
+    .roi-s-bar.roi-s-win  { background: var(--green); }
+    .roi-s-bar.roi-s-dream{ background: #cc9900; }
+    .roi-current { display: flex; align-items: baseline; gap: 8px; margin: 10px 0 4px; }
+    .roi-current-pct { font-size: 2rem; font-weight: 900; color: var(--primary-dark); line-height: 1; }
+    .roi-current-label { font-size: .72rem; color: var(--muted); }
+
     /* ─── OSHI TIMELINE ─── */
     .oshi-timeline {
       position: relative;
@@ -1379,63 +1398,96 @@
     <div class="inv-grid">
       <div class="inv-card">
         <p class="inv-label">総獲得賞金</p>
-        <p class="inv-value">5,318<span style="font-size:.72rem;">万円</span></p>
-        <p class="inv-sub">19戦3勝の累計</p>
+        <p class="inv-value">6,259<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-sub">22戦3勝の累計</p>
       </div>
       <div class="inv-card inv-accent">
         <p class="inv-label">馬主分配（推定）</p>
-        <p class="inv-value">4,254<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-value">5,007<span style="font-size:.72rem;">万円</span></p>
         <p class="inv-sub">賞金×80%（JRA規定）</p>
       </div>
       <div class="inv-card inv-green">
         <p class="inv-label">1口分配累計（推定）</p>
-        <p class="inv-value">約4.0<span style="font-size:.72rem;">万円</span></p>
-        <p class="inv-sub">800口・クラブ取り分考慮</p>
+        <p class="inv-value">約10.6<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-sub">400口・クラブ取り分考慮</p>
       </div>
       <div class="inv-card inv-blue">
         <p class="inv-label">維持費累計（推定）</p>
-        <p class="inv-value">約3.0<span style="font-size:.72rem;">万円</span></p>
-        <p class="inv-sub">〜1,000円/口/月 × 約30ヶ月</p>
+        <p class="inv-value">約6.5<span style="font-size:.72rem;">万円</span></p>
+        <p class="inv-sub">2,500円/口/月 × 26ヶ月</p>
+      </div>
+      <div class="inv-card" style="border-top-color:var(--primary);">
+        <p class="inv-label">現在の回収率（推定）</p>
+        <p class="inv-value">41.7<span style="font-size:.72rem;">%</span></p>
+        <p class="inv-sub">分配÷（出資金＋維持費）</p>
       </div>
       <div class="inv-card" style="border-top-color:var(--red);">
         <p class="inv-label">複勝率</p>
-        <p class="inv-value">58<span style="font-size:.72rem;">%</span></p>
-        <p class="inv-sub">3着内 11回 / 19戦</p>
-      </div>
-      <div class="inv-card" style="border-top-color:#7b2d8b;">
-        <p class="inv-label">平均人気</p>
-        <p class="inv-value">2.8<span style="font-size:.72rem;">番人気</span></p>
-        <p class="inv-sub">陣営からの信頼の証</p>
+        <p class="inv-value">59<span style="font-size:.72rem;">%</span></p>
+        <p class="inv-sub">3着内 13回 / 22戦</p>
       </div>
     </div>
 
-    <!-- 賞金積み上げバー -->
+    <!-- 賞金内訳バー -->
     <div class="prize-chart-wrap">
-      <p class="prize-chart-title">📊 主要レース別獲得賞金（推定）</p>
+      <p class="prize-chart-title">📊 獲得賞金内訳（最大値=1,550万円）</p>
       <div class="prize-row">
-        <span class="prize-row-label">袖ケ浦特別（2勝C）</span>
+        <span class="prize-row-label">袖ケ浦特別（2勝C 1着）</span>
         <div class="prize-bar-bg"><div class="prize-bar-fill pb-win" style="width:100%;"></div></div>
-        <span class="prize-val">約800万円</span>
+        <span class="prize-val">1,550万円</span>
       </div>
       <div class="prize-row">
-        <span class="prize-row-label">秋吉台特別（1勝C）</span>
-        <div class="prize-bar-bg"><div class="prize-bar-fill pb-win" style="width:56%;"></div></div>
-        <span class="prize-val">約450万円</span>
+        <span class="prize-row-label">秋吉台特別（1勝C 1着）</span>
+        <div class="prize-bar-bg"><div class="prize-bar-fill pb-win" style="width:75%;"></div></div>
+        <span class="prize-val">1,160万円</span>
       </div>
       <div class="prize-row">
-        <span class="prize-row-label">3着11回（累計）</span>
-        <div class="prize-bar-bg"><div class="prize-bar-fill pb-place" style="width:48%;"></div></div>
+        <span class="prize-row-label">3着入賞 計6回（累計）</span>
+        <div class="prize-bar-bg"><div class="prize-bar-fill pb-place" style="width:90%;"></div></div>
         <span class="prize-val">約1,400万円</span>
       </div>
       <div class="prize-row">
-        <span class="prize-row-label">未勝利・その他</span>
-        <div class="prize-bar-bg"><div class="prize-bar-fill" style="width:33%;"></div></div>
-        <span class="prize-val">約2,668万円</span>
+        <span class="prize-row-label">未勝利1着・2着・その他</span>
+        <div class="prize-bar-bg"><div class="prize-bar-fill" style="width:66%;"></div></div>
+        <span class="prize-val">約2,149万円</span>
+      </div>
+    </div>
+
+    <!-- 回収率シミュレーション -->
+    <div class="prize-chart-wrap">
+      <p class="prize-chart-title">💹 一口回収率シミュレーション</p>
+
+      <table class="roi-table">
+        <tr><td>1口出資金</td><td>19.0万円</td></tr>
+        <tr><td>維持費累計（推定 26ヶ月 × 2,500円/月）</td><td>約 6.5万円</td></tr>
+        <tr class="roi-total"><td>▶ 総投資額（推定）</td><td>約 25.5万円</td></tr>
+        <tr class="roi-income"><td>累計分配金（推定）</td><td>約 10.6万円</td></tr>
+        <tr class="roi-result"><td>現在の回収率</td><td>41.7%</td></tr>
+      </table>
+
+      <p class="prize-chart-title" style="margin-top:14px;">🔮 今後のシナリオ別回収率予測</p>
+      <div class="roi-scenario">
+        <div class="roi-s-row">
+          <span class="roi-s-label">現状維持</span>
+          <div class="roi-s-bar-wrap"><div class="roi-s-bar" style="width:42%;">41.7%</div></div>
+        </div>
+        <div class="roi-s-row">
+          <span class="roi-s-label">朱雀S 3着（+460万）</span>
+          <div class="roi-s-bar-wrap"><div class="roi-s-bar roi-s-mid" style="width:44%;">44%</div></div>
+        </div>
+        <div class="roi-s-row">
+          <span class="roi-s-label">朱雀S 1着（3勝C突破）</span>
+          <div class="roi-s-bar-wrap"><div class="roi-s-bar roi-s-win" style="width:52%;">52%</div></div>
+        </div>
+        <div class="roi-s-row">
+          <span class="roi-s-label">3勝C突破後 重賞好走</span>
+          <div class="roi-s-bar-wrap"><div class="roi-s-bar roi-s-dream" style="width:75%;">70%+</div></div>
+        </div>
       </div>
     </div>
 
     <p class="inv-disclaimer">
-      ※ 口数・維持費・クラブ取り分はいずれも推定値（800口・月次維持費約60万円/馬想定）。正確な数値は東京サラブレッドクラブの会員ページでご確認ください。賞金分配は着順賞金のみの概算で、出走手当・育成手当などは含みません。
+      ※ 総獲得賞金はJBIS確認分（5,318.6万円）＋巌流島S・アクアマリンS分（各470万円）の合算。1口出資金19万円・400口は東京サラブレッドクラブ実績値。維持費・クラブ取り分（85%会員分配）は推定値。回収率 = 累計分配金 ÷（出資金＋維持費累計）。正確な分配金は会員ページでご確認ください。
     </p>
   </section>
 
