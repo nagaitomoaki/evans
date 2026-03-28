@@ -722,6 +722,41 @@
     .rivals-east { background: #e8eef8; color: #1a3a70; border-left: 4px solid #3366cc; }
     .rivals-west { background: #fce8e8; color: #700000; border-left: 4px solid #cc2222; }
 
+    /* ── 高松宮記念予想 ── */
+    .taka-race-info { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+    .taka-badge { display:inline-flex; align-items:center; gap:4px; font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:12px; }
+    .taka-badge-g1  { background:#fef3c7; border:1px solid #d97706; color:#92400e; }
+    .taka-badge-loc { background:#ede9fe; border:1px solid #7c3aed; color:#4c1d95; }
+    .taka-badge-hp  { background:#fee2e2; border:1px solid #dc2626; color:#7f1d1d; }
+    .taka-badge-fast{ background:#d1fae5; border:1px solid #059669; color:#064e3b; }
+
+    .taka-picks { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+    .taka-pick  { display:flex; align-items:flex-start; gap:12px; background:#fff; border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+    .taka-mark  { font-size:1.5rem; font-weight:900; min-width:32px; text-align:center; line-height:1; }
+    .taka-mark.honmei { color:#cc0000; }
+    .taka-mark.taiko  { color:#0055aa; }
+    .taka-mark.tanana { color:#007700; }
+    .taka-mark.ana    { color:#cc8800; }
+    .taka-pick-body   { flex:1; }
+    .taka-pick-name   { font-size:.95rem; font-weight:800; margin-bottom:2px; }
+    .taka-pick-waku   { font-size:.7rem; color:var(--muted); margin-bottom:4px; }
+    .taka-pick-reason { font-size:.78rem; color:var(--text-sub); line-height:1.6; }
+    .taka-pace-tag    { display:inline-block; font-size:.68rem; font-weight:700; padding:1px 6px; border-radius:4px; margin-right:4px; }
+    .pace-good  { background:#d1fae5; color:#065f46; }
+    .pace-ok    { background:#fef9c3; color:#78350f; }
+    .pace-bad   { background:#fee2e2; color:#7f1d1d; }
+
+    .taka-table-wrap { overflow-x:auto; }
+    .taka-table { width:100%; border-collapse:collapse; font-size:.78rem; min-width:520px; }
+    .taka-table thead th { background:var(--navy); color:#fff; padding:6px 8px; text-align:left; white-space:nowrap; }
+    .taka-table tbody tr { border-bottom:1px solid var(--border); }
+    .taka-table tbody tr:nth-child(even) { background:var(--surface2); }
+    .taka-table tbody tr:hover { background:#f5f0ea; }
+    .taka-table td { padding:7px 8px; vertical-align:middle; }
+    .taka-table .mark-col { font-weight:900; font-size:1rem; text-align:center; width:28px; }
+    .waku-cell { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:3px; font-size:.72rem; font-weight:700; color:#fff; }
+    .hp-star { color:#cc0000; font-weight:900; }
+
     /* ─── HEADER IMAGE ─── */
     .header-photo-wrap {
       position: relative;
@@ -1343,6 +1378,7 @@
   <button class="tab-btn" data-tab="photos">🖼 馬体</button>
   <button class="tab-btn" data-tab="comments">💬 コメント</button>
   <button class="tab-btn" data-tab="rivals">⚔️ ライバル</button>
+  <button class="tab-btn" data-tab="takamatsu">🏆 高松宮記念</button>
 </nav>
 
 <!-- ════════════ MAIN ════════════ -->
@@ -3134,6 +3170,242 @@
   </section>
 
   </div><!-- /tab-rivals -->
+
+  <!-- ── 高松宮記念タブ ── -->
+  <div class="tab-panel" id="tab-takamatsu">
+  <section>
+    <h2><span class="icon">🏆</span>第56回 高松宮記念（G1）予想</h2>
+    <div>
+
+      <!-- レース概要バッジ -->
+      <div class="taka-race-info">
+        <span class="taka-badge taka-badge-g1">G1</span>
+        <span class="taka-badge taka-badge-loc">📍 中京 芝1200m 左</span>
+        <span class="taka-badge" style="background:#e0f2fe;border:1px solid #0284c7;color:#0c4a6e;">📅 2026年3月29日（日）15:40</span>
+        <span class="taka-badge taka-badge-hp">⚡ ハイペース想定</span>
+        <span class="taka-badge taka-badge-fast">⏱ 高速馬場（良）</span>
+      </div>
+
+      <!-- ペース分析 -->
+      <div style="background:#fff8f0;border-left:4px solid var(--primary);border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:16px;font-size:.82rem;line-height:1.8;">
+        <p style="font-weight:800;margin-bottom:6px;">⚡ ペース分析：前半からハイペース濃厚</p>
+        <p>逃げ宣言の<strong>ピューロマジック</strong>（6枠12番）が引っ張り、<strong>パンジャタワー・ジューンブレア</strong>も前を主張する見込み。前半600m通過は<strong>33秒前半</strong>が想定され、昨年（1:07.9）を上回る<strong>1:07台前半</strong>も視野。</p>
+        <p style="margin-top:6px;">→ ハイペースを追走しつつ後半も脚を使える<strong>持続力型・差し馬</strong>が有利。先行馬の垂れ後をついてくる脚質が鍵。</p>
+      </div>
+
+      <!-- 予想印 -->
+      <p style="font-size:.85rem;font-weight:800;color:var(--navy);margin-bottom:10px;">🎯 ハイペース×高速馬場 対応馬 予想印</p>
+      <div class="taka-picks">
+
+        <div class="taka-pick">
+          <div class="taka-mark honmei">◎</div>
+          <div class="taka-pick-body">
+            <p class="taka-pick-name">サトノレーヴ <span style="font-size:.72rem;font-weight:400;color:var(--muted);">5枠9番 / C.ルメール / 牡7歳</span></p>
+            <p class="taka-pick-waku">父: ロードカナロア ／ 堀宣行厩舎（美浦）</p>
+            <div class="taka-pick-reason">
+              <span class="taka-pace-tag pace-good">ハイペース◎</span><span class="taka-pace-tag pace-good">高速馬場◎</span><span class="taka-pace-tag pace-good">中京適性◎</span>
+              <p style="margin-top:4px;">昨年覇者でディフェンディングチャンピオン。ハイペースになるほど持続力が活き、中京芝1200mはコース適性も最高。ルメール騎乗でロスなく運べる。連覇なら2011年キンシャサノキセキ以来。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="taka-pick">
+          <div class="taka-mark taiko">○</div>
+          <div class="taka-pick-body">
+            <p class="taka-pick-name">ジューンブレア <span style="font-size:.72rem;font-weight:400;color:var(--muted);">8枠18番 / 武豊 / 牝4歳</span></p>
+            <p class="taka-pick-waku">オーシャンSレースレコード制覇（2026年）</p>
+            <div class="taka-pick-reason">
+              <span class="taka-pace-tag pace-good">高速馬場◎</span><span class="taka-pace-tag pace-ok">ハイペース○</span><span class="taka-pace-tag pace-bad">外枠△</span>
+              <p style="margin-top:4px;">前走オーシャンSをレースレコードで制覇した上り馬。スピードの絶対値が高く、今の充実ぶりは本物。ただし8枠18番の外枠がハイペースの追走では消耗要因。武豊騎手のロスのない騎乗に期待。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="taka-pick">
+          <div class="taka-mark tanana">▲</div>
+          <div class="taka-pick-body">
+            <p class="taka-pick-name">ナムラクレア <span style="font-size:.72rem;font-weight:400;color:var(--muted);">7枠13番 / 浜中俊 / 牝6歳</span></p>
+            <p class="taka-pick-waku">高松宮記念3年連続2着（2023〜2025）/ ラストラン</p>
+            <div class="taka-pick-reason">
+              <span class="taka-pace-tag pace-good">ハイペース◎</span><span class="taka-pace-tag pace-good">差し適性◎</span><span class="taka-pace-tag pace-ok">ラストラン○</span>
+              <p style="margin-top:4px;">このレースで3年連続2着の鉄板安定感。差しが決まるハイペース展開が最も向くタイプ。ラストランの気合乗りに期待。悲願のG1制覇があるとすれば今年。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="taka-pick">
+          <div class="taka-mark ana">△</div>
+          <div class="taka-pick-body">
+            <p class="taka-pick-name">ウインカーネリアン <span style="font-size:.72rem;font-weight:400;color:var(--muted);">4枠8番 / 三浦皇成 / 牡8歳</span></p>
+            <p class="taka-pick-waku">昨年スプリンターズS優勝 / 人馬ともG1初制覇</p>
+            <div class="taka-pick-reason">
+              <span class="taka-pace-tag pace-ok">先行持続○</span><span class="taka-pace-tag pace-ok">枠○</span><span class="taka-pace-tag pace-bad">8歳△</span>
+              <p style="margin-top:4px;">8歳ながら昨秋スプリンターズSを制覇。先行して持続力で粘るタイプで、ハイペースでも垂れにくい。4枠8番の内枠はプラス。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="taka-pick">
+          <div class="taka-mark ana">☆</div>
+          <div class="taka-pick-body">
+            <p class="taka-pick-name">レイピア <span style="font-size:.72rem;font-weight:400;color:var(--muted);">7枠14番 / 戸崎圭太</span></p>
+            <p class="taka-pick-waku">差し適性◎ のハイペース大歓迎型</p>
+            <div class="taka-pick-reason">
+              <span class="taka-pace-tag pace-good">ハイペース◎</span><span class="taka-pace-tag pace-good">差し◎</span>
+              <p style="margin-top:4px;">典型的な差しタイプ。前が潰れるハイペースになれば一番の恩恵を受ける馬。大穴として狙う価値あり。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 全出走馬テーブル -->
+      <p style="font-size:.85rem;font-weight:800;color:var(--navy);margin-bottom:8px;margin-top:20px;">📋 全出走馬 ハイペース適性評価</p>
+      <div class="taka-table-wrap">
+        <table class="taka-table">
+          <thead>
+            <tr>
+              <th>印</th><th>枠</th><th>馬番</th><th>馬名</th><th>騎手</th><th>性齢</th>
+              <th>ハイペース</th><th>高速馬場</th><th>一言評価</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mark-col" style="color:#cc0000;">◎</td>
+              <td><span class="waku-cell" style="background:#888;">5</span></td>
+              <td>9</td><td style="font-weight:700;">サトノレーヴ</td><td>C.ルメール</td><td>牡7</td>
+              <td><span class="hp-star">★★★</span></td><td><span class="hp-star">★★★</span></td>
+              <td>昨年覇者・連覇狙い・中京適性最高</td>
+            </tr>
+            <tr>
+              <td class="mark-col" style="color:#0055aa;">○</td>
+              <td><span class="waku-cell" style="background:#555;">8</span></td>
+              <td>18</td><td style="font-weight:700;">ジューンブレア</td><td>武豊</td><td>牝4</td>
+              <td>★★☆</td><td><span class="hp-star">★★★</span></td>
+              <td>前走レースレコード・外枠が唯一の懸念</td>
+            </tr>
+            <tr>
+              <td class="mark-col" style="color:#007700;">▲</td>
+              <td><span class="waku-cell" style="background:#888;">7</span></td>
+              <td>13</td><td style="font-weight:700;">ナムラクレア</td><td>浜中俊</td><td>牝6</td>
+              <td><span class="hp-star">★★★</span></td><td>★★☆</td>
+              <td>3年連続2着・ラストラン・差し適性◎</td>
+            </tr>
+            <tr>
+              <td class="mark-col" style="color:#cc8800;">△</td>
+              <td><span class="waku-cell" style="background:#fff;border:1px solid #999;color:#333;">4</span></td>
+              <td>8</td><td style="font-weight:700;">ウインカーネリアン</td><td>三浦皇成</td><td>牡8</td>
+              <td>★★☆</td><td>★★☆</td>
+              <td>スプリンターズS覇者・先行持続力</td>
+            </tr>
+            <tr>
+              <td class="mark-col" style="color:#cc8800;">☆</td>
+              <td><span class="waku-cell" style="background:#888;">7</span></td>
+              <td>14</td><td style="font-weight:700;">レイピア</td><td>戸崎圭太</td><td></td>
+              <td><span class="hp-star">★★★</span></td><td>★★☆</td>
+              <td>差し一手・ハイペース大歓迎の穴馬</td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#cc0000;">5</span></td>
+              <td>10</td><td>ママコチャ</td><td>川田将雅</td><td></td>
+              <td>★★☆</td><td>★★☆</td>
+              <td>安定感はあるが決め手に課題</td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#555;">8</span></td>
+              <td>15</td><td>インビンシブルパパ</td><td>佐々木大輔</td><td></td>
+              <td>★☆☆</td><td>★★☆</td>
+              <td>昨年スプリンターズS優勝・8歳</td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#cc0000;">6</span></td>
+              <td>12</td><td>ピューロマジック</td><td>北村友一</td><td></td>
+              <td>★☆☆</td><td>★☆☆</td>
+              <td>逃げ馬・ハイペースの先頭を作る側</td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#fff;border:1px solid #999;color:#333;">1</span></td>
+              <td>1</td><td>パンジャタワー</td><td>松山弘平</td><td></td>
+              <td>★★☆</td><td>★★☆</td>
+              <td>NHKマイルC覇者・距離短縮</td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#fff;border:1px solid #999;color:#333;">2</span></td>
+              <td>3</td><td>エーティーマクフィ</td><td>富田暁</td><td></td>
+              <td>★★☆</td><td>★☆☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#fff;border:1px solid #999;color:#333;">2</span></td>
+              <td>4</td><td>ダノンマッキンリー</td><td>高杉吏麒</td><td></td>
+              <td>★☆☆</td><td>★★☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#cc0000;">3</span></td>
+              <td>5</td><td>ヤマニンアルリフラ</td><td>団野大成</td><td></td>
+              <td>★★☆</td><td>★☆☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#cc0000;">3</span></td>
+              <td>6</td><td>レッドモンレーヴ</td><td>酒井学</td><td></td>
+              <td>★☆☆</td><td>★★☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#fff;border:1px solid #999;color:#333;">4</span></td>
+              <td>7</td><td>ヨシノイースター</td><td>田辺裕信</td><td></td>
+              <td>★☆☆</td><td>★☆☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#cc0000;">6</span></td>
+              <td>11</td><td>ララマセラシオン</td><td>—</td><td></td>
+              <td>★☆☆</td><td>★☆☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#555;">8</span></td>
+              <td>16</td><td>フィオライア</td><td>太宰啓介</td><td></td>
+              <td>★★☆</td><td>★☆☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#555;">8</span></td>
+              <td>17</td><td>ペアポルックス</td><td>岩田康誠</td><td></td>
+              <td>★☆☆</td><td>★☆☆</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="mark-col"></td>
+              <td><span class="waku-cell" style="background:#fff;border:1px solid #999;color:#333;">1</span></td>
+              <td>2</td><td>ビッグシーザー</td><td>—</td><td></td>
+              <td>★★☆</td><td>★★☆</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="margin-top:14px;font-size:.75rem;color:var(--muted);">
+        📌 ハイペース評価は「ハイペースを追走して後半も粘れるか」、高速馬場評価は「良馬場・高タイムレースへの実績・適性」を基に判断。★★★=◎ ★★☆=○ ★☆☆=△。2026年3月29日現在の情報をもとに作成。netkeiba・競馬ラボ・JRA公式情報を参照。
+      </p>
+    </div>
+  </section>
+  </div><!-- /tab-takamatsu -->
 
 </main>
 
