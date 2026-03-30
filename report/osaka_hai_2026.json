@@ -1,0 +1,104 @@
+{
+  "race": "大阪杯 2026",
+  "updated": "2026-03-30",
+  "model": "LightGBM v1.0 × ルールベース v5",
+  "note": "ML(60%) + ルールベース v5(40%) の統合スコアでランキング",
+  "horses": [
+    {
+      "name": "メイショウタバル",
+      "ml_score": 0.975,
+      "rule_v5": "◎",
+      "rule_score": 1.0,
+      "integrated_score": 0.985,
+      "integrated_rank": 1,
+      "confidence": "★★★ 超高確信",
+      "bet_advice": "単勝増額・全ワイド軸",
+      "rule_note": "好走条件MAX・阪神3戦3勝",
+      "elimination_level": 0
+    },
+    {
+      "name": "ダノンデサイル",
+      "ml_score": 0.721,
+      "rule_v5": "○",
+      "rule_score": 0.75,
+      "integrated_score": 0.732,
+      "integrated_rank": 2,
+      "confidence": "★★☆ 高確信",
+      "bet_advice": "馬連+ワイド安定",
+      "rule_note": "G1 3勝・5歳・栗東・阪神初リスク",
+      "elimination_level": 0
+    },
+    {
+      "name": "ショウヘイ",
+      "ml_score": 0.818,
+      "rule_v5": "▲",
+      "rule_score": 0.6,
+      "integrated_score": 0.731,
+      "integrated_rank": 3,
+      "confidence": "★☆☆ 中確信",
+      "bet_advice": "馬連+ワイド安定",
+      "rule_note": "4歳・関西G1/G2実績・川田継続",
+      "elimination_level": 0
+    },
+    {
+      "name": "レーベンスティール",
+      "ml_score": 0.847,
+      "rule_v5": "☆A",
+      "rule_score": 0.3,
+      "integrated_score": 0.628,
+      "integrated_rank": 4,
+      "confidence": "☆ 低確信（穴のみ）",
+      "bet_advice": "ワイド穴◎-☆ 少額",
+      "rule_note": "中山記念完勝・消し×2（6歳+美浦）穴A型",
+      "elimination_level": 2
+    },
+    {
+      "name": "エコロヴァルツ",
+      "ml_score": 0.16,
+      "rule_v5": "候補",
+      "rule_score": 0.5,
+      "integrated_score": 0.296,
+      "integrated_rank": 5,
+      "confidence": "★☆☆ 中確信",
+      "bet_advice": "ワイドのみ",
+      "rule_note": "4歳・栗東・先行・好走条件揃う",
+      "elimination_level": 0
+    },
+    {
+      "name": "クロワデュノール",
+      "ml_score": 0.154,
+      "rule_v5": "△",
+      "rule_score": 0.45,
+      "integrated_score": 0.272,
+      "integrated_rank": 6,
+      "confidence": "★☆☆ 中確信",
+      "bet_advice": "ワイドのみ（馬連外す）",
+      "rule_note": "ダービー馬・阪神初・差し脚質",
+      "elimination_level": 0
+    },
+    {
+      "name": "ヨーホーレイク",
+      "ml_score": 0.01,
+      "rule_v5": "☆C",
+      "rule_score": 0.2,
+      "integrated_score": 0.086,
+      "integrated_rank": 7,
+      "confidence": "☆ 低確信（穴のみ）",
+      "bet_advice": "3連複◎○▲-☆ 少額",
+      "rule_note": "菊花賞馬・8歳消し・穴C型（超穴）",
+      "elimination_level": 2
+    },
+    {
+      "name": "マテンロウレオ",
+      "ml_score": 0.043,
+      "rule_v5": "消し",
+      "rule_score": 0.05,
+      "integrated_score": 0.046,
+      "integrated_rank": 8,
+      "confidence": "☆ 低確信（穴のみ）",
+      "bet_advice": "全買い目から除外",
+      "rule_note": "7歳・G1複数勝ちなし→Lv.3消し",
+      "elimination_level": 3
+    }
+  ]
+}

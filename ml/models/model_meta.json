@@ -1,0 +1,41 @@
+{
+  "feature_cols": [
+    "age_int",
+    "age_good",
+    "age_bad",
+    "is_ritto",
+    "is_miho",
+    "is_front_runner",
+    "running_style_enc",
+    "course_exp_hanshin",
+    "career_g1_wins",
+    "has_g1_win",
+    "popularity",
+    "log_popularity",
+    "is_favorite",
+    "is_long_shot",
+    "jockey_continued",
+    "prev_grade_enc",
+    "prev_finish",
+    "prev_top3",
+    "track_enc",
+    "is_heavy",
+    "good_run_count",
+    "elimination_level",
+    "rule_v5_score",
+    "is_eliminated",
+    "favorite_x_good",
+    "age_x_ritto"
+  ],
+  "target_col": "is_top3",
+  "cv_avg": {
+    "auc": 0.87,
+    "recall3": 0.778,
+    "roi": 0.833
+  },
+  "test_metrics": {
+    "auc": 0.771,
+    "recall3": 0.667,
+    "roi": 1.0
+  }
+}

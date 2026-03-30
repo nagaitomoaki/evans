@@ -4025,6 +4025,19 @@
           単勝増額で◎の確信を最大化。逆モデルが警戒する穴馬は金額を絞り、その分を単勝・馬連に回すことで<strong style="color:#fbbf24;">期待値（EV）をさらに向上</strong>させる。
         </div>
       </div>
+
+      <!-- ══════════ ML予測セクション ══════════ -->
+      <div id="ml-prediction-section" style="margin-top:24px;">
+        <p style="font-size:.85rem;font-weight:800;color:var(--navy);margin-bottom:4px;">🤖 ML予測（LightGBM × ルールベース v5 統合）</p>
+        <p style="font-size:.74rem;color:var(--muted);margin-bottom:10px;">
+          LightGBM（3着以内確率）× ルールベースv5スコアを 60:40 で統合したランキング。
+          <span style="color:#b45309;">※手動データ67件で学習。netkeiba追加データで精度向上予定。</span>
+        </p>
+        <div id="ml-table-container">
+          <p style="font-size:.8rem;color:var(--muted);">ML予測データ読み込み中...</p>
+        </div>
+        <div id="ml-cv-summary" style="margin-top:10px;"></div>
+      </div>
     </div>
   </section>
   </div><!-- /tab-takamatsu -->
@@ -4068,6 +4081,89 @@
     document.getElementById('lightbox').classList.remove('open');
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ── ML予測 読み込み・描画 ── */
+  async function loadMLPrediction() {
+    const container = document.getElementById('ml-table-container');
+    const cvEl      = document.getElementById('ml-cv-summary');
+    if (!container) return;
+    try {
+      const res  = await fetch('ml/output/osaka_hai_2026.json');
+      if (!res.ok) throw new Error('not found');
+      const data = await res.json();
+
+      const confidenceColor = (c) => {
+        if (c.includes('★★★')) return '#14532d';
+        if (c.includes('★★☆')) return '#166534';
+        if (c.includes('★☆☆')) return '#854d0e';
+        return '#b45309';
+      };
+      const rankBg = (r) => {
+        if (r === 1) return '#dcfce7';
+        if (r === 2) return '#f0fdf4';
+        if (r <= 4) return '';
+        return '#fafafa';
+      };
+
+      let html = `
+        <p style="font-size:.72rem;color:var(--muted);margin-bottom:6px;">
+          モデル: ${data.model} ／ 更新: ${data.updated}
+        </p>
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:.77rem;min-width:480px;">
+          <thead>
+            <tr style="background:var(--navy);color:#fff;">
+              <th style="padding:5px 8px;">統合順位</th>
+              <th style="padding:5px 8px;">馬名</th>
+              <th style="padding:5px 8px;">ML確率</th>
+              <th style="padding:5px 8px;">v5印</th>
+              <th style="padding:5px 8px;">統合スコア</th>
+              <th style="padding:5px 8px;">確信度</th>
+              <th style="padding:5px 8px;">買い目指示</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+      for (const h of data.horses) {
+        const pct   = (h.ml_score * 100).toFixed(1) + '%';
+        const score = h.integrated_score.toFixed(3);
+        const bg    = rankBg(h.integrated_rank);
+        const cc    = confidenceColor(h.confidence);
+        html += `
+          <tr style="border-bottom:1px solid var(--border);${bg ? 'background:' + bg + ';' : ''}">
+            <td style="padding:5px 8px;text-align:center;font-weight:700;">${h.integrated_rank}</td>
+            <td style="padding:5px 8px;font-weight:${h.integrated_rank <= 3 ? '700' : '400'};">${h.name}</td>
+            <td style="padding:5px 8px;text-align:center;">${pct}</td>
+            <td style="padding:5px 8px;text-align:center;font-weight:700;">${h.rule_v5}</td>
+            <td style="padding:5px 8px;text-align:center;font-weight:700;">${score}</td>
+            <td style="padding:5px 8px;font-weight:700;color:${cc};">${h.confidence}</td>
+            <td style="padding:5px 8px;font-size:.72rem;">${h.bet_advice}</td>
+          </tr>`;
+      }
+
+      html += `</tbody></table></div>
+        <p style="font-size:.71rem;color:var(--muted);margin-top:6px;">
+          統合スコア = ML確率×0.6 + ルールスコア×0.4。
+          ML精度: Walk-forward CV AUC=0.870 / Recall@3=77.8% / 単勝PseudoROI=83.3%
+        </p>`;
+      container.innerHTML = html;
+    } catch (e) {
+      container.innerHTML = `<p style="font-size:.8rem;color:var(--muted);">⚠️ ML予測データが見つかりません（ml/output/osaka_hai_2026.json）。<br>python3 ml/04_predict.py を実行してください。</p>`;
+    }
+  }
+
+  // 大阪杯タブが開かれたときに読み込む
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    if (btn.dataset.tab === 'takamatsu') {
+      btn.addEventListener('click', () => {
+        if (!window._mlLoaded) { loadMLPrediction(); window._mlLoaded = true; }
+      });
+    }
+  });
+  // 初期表示が大阪杯タブの場合も対応
+  if (document.getElementById('tab-takamatsu')?.classList.contains('active')) {
+    loadMLPrediction(); window._mlLoaded = true;
+  }
 
   /* ── コメント読み込み ── */
   let _allComments = [];
