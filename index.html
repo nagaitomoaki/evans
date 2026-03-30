@@ -3474,6 +3474,65 @@
         <p style="margin-top:6px;font-size:.73rem;color:#166534;">✅ 新モデルで予測不能な残り例外: 「7歳が3着(2025)」「美浦11番人気が3着(2024)」「6歳美浦が4着(2022)」 — これらはいずれも稀なケース</p>
       </div>
 
+      <!-- v5: 回収率最大化モデル -->
+      <div style="background:#fff7ed;border-left:4px solid #ea580c;border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:12px;font-size:.82rem;line-height:1.8;">
+        <p style="font-weight:800;margin-bottom:4px;color:#9a3412;">💰 予想モデル v5（回収率最大化版）</p>
+        <p style="font-size:.74rem;color:#7c2d12;margin-bottom:8px;">v4は「的中率優先」→ 人気馬中心 → 低配当 → 回収率が上がらない。<br>v5は<strong>「穴馬を積極採用 + 買い目を買い分け」</strong>で期待値を最大化する。</p>
+
+        <!-- 印の体系 -->
+        <p style="font-weight:700;color:#9a3412;margin-bottom:4px;">▍印の体系（v5）</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.76rem;min-width:420px;">
+            <thead><tr style="background:#c2410c;color:#fff;"><th style="padding:4px 8px;">印</th><th style="padding:4px 8px;">条件</th><th style="padding:4px 8px;">使う買い目</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:4px 8px;font-weight:900;font-size:.9rem;">◎</td><td style="padding:4px 8px;">4〜5歳・栗東・先行/逃げ（好走条件MAX）</td><td style="padding:4px 8px;color:#007700;font-weight:700;">単勝・軸馬（全買い目の軸）</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:var(--surface2);"><td style="padding:4px 8px;font-weight:900;font-size:.9rem;">○</td><td style="padding:4px 8px;">好走条件十分な2番手候補</td><td style="padding:4px 8px;">馬連・ワイド安定</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:4px 8px;font-weight:900;font-size:.9rem;">▲</td><td style="padding:4px 8px;">好走条件十分な3番手候補</td><td style="padding:4px 8px;">馬連・ワイド安定</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:var(--surface2);"><td style="padding:4px 8px;font-weight:900;font-size:.9rem;">△</td><td style="padding:4px 8px;">消し条件1つ（1〜3番人気）</td><td style="padding:4px 8px;">ワイド追加・3連複</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fff3cd;"><td style="padding:4px 8px;font-weight:900;font-size:.95rem;color:#b45309;">☆</td><td style="padding:4px 8px;font-weight:700;color:#b45309;">穴条件に合致する馬（下記参照）</td><td style="padding:4px 8px;color:#b45309;font-weight:700;">ワイド穴・3連複穴→高配当狙い</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 穴条件 -->
+        <p style="font-weight:700;color:#9a3412;margin-top:10px;margin-bottom:4px;">▍☆穴条件（v4で切っていた馬を積極採用）</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.76rem;min-width:380px;">
+            <thead><tr style="background:#92400e;color:#fff;"><th style="padding:4px 8px;">パターン</th><th style="padding:4px 8px;">条件</th><th style="padding:4px 8px;">根拠（バックテスト）</th><th style="padding:4px 8px;">推奨買い目</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);background:#fef3c7;"><td style="padding:4px 8px;font-weight:700;">A型: 6歳美浦</td><td style="padding:4px 8px;">6歳 + 美浦（ダブル消し）</td><td style="padding:4px 8px;">2022ヒシイグアス4着（v4で✗）</td><td style="padding:4px 8px;color:#b45309;">ワイド◎-☆ / 3連複</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:4px 8px;font-weight:700;">B型: 中人気消し馬</td><td style="padding:4px 8px;">消し条件1つ + 4〜9番人気</td><td style="padding:4px 8px;">2017ステファノス2着(7番人気)（v4で✗）</td><td style="padding:4px 8px;color:#b45309;">ワイド◎-☆</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fef3c7;"><td style="padding:4px 8px;font-weight:700;">C型: 7歳G1実績馬</td><td style="padding:4px 8px;">7歳以上 + G1馬/重賞複数勝ち</td><td style="padding:4px 8px;">2025ヨーホーレイク3着（v4で✗）</td><td style="padding:4px 8px;color:#b45309;">3連複のみ（超穴）</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:4px 8px;font-weight:700;">D型: 高人気美浦</td><td style="padding:4px 8px;">美浦 + 二桁番人気</td><td style="padding:4px 8px;">2024ルージュエヴァイユ3着(11番人気)</td><td style="padding:4px 8px;color:#9ca3af;">3連複少額のみ（低確率）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 買い目戦略 -->
+        <p style="font-weight:700;color:#9a3412;margin-top:10px;margin-bottom:4px;">▍買い目戦略（v5 推奨）</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.76rem;min-width:380px;">
+            <thead><tr style="background:#9a3412;color:#fff;"><th style="padding:4px 8px;">買い目</th><th style="padding:4px 8px;">組み合わせ</th><th style="padding:4px 8px;">狙い</th><th style="padding:4px 8px;">想定配当</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);background:#d1fae5;"><td style="padding:4px 8px;font-weight:700;">単勝</td><td style="padding:4px 8px;">◎1点</td><td style="padding:4px 8px;">確実な的中（1着100%精度）</td><td style="padding:4px 8px;">2〜5倍</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:4px 8px;font-weight:700;">馬連</td><td style="padding:4px 8px;">◎-○、◎-▲（2点）</td><td style="padding:4px 8px;">安定回収ベース</td><td style="padding:4px 8px;">3〜15倍</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fef3c7;"><td style="padding:4px 8px;font-weight:700;color:#b45309;">ワイド安定</td><td style="padding:4px 8px;">◎-○、◎-▲、◎-△（3点）</td><td style="padding:4px 8px;">的中安定・回収の柱</td><td style="padding:4px 8px;">2〜8倍</td></tr>
+              <tr style="border-bottom:1px solid var(--border);background:#ffedd5;"><td style="padding:4px 8px;font-weight:700;color:#c2410c;">ワイド穴★</td><td style="padding:4px 8px;">◎-☆A型、◎-☆B型（2点）</td><td style="padding:4px 8px;font-weight:700;">高配当狙い・回収率UP</td><td style="padding:4px 8px;font-weight:700;color:#c2410c;">8〜30倍期待</td></tr>
+              <tr style="border-bottom:1px solid var(--border);"><td style="padding:4px 8px;font-weight:700;">3連複</td><td style="padding:4px 8px;">◎○▲ + ☆A/B/C 1頭フォーメーション</td><td style="padding:4px 8px;">穴絡みで大回収</td><td style="padding:4px 8px;">30〜200倍期待</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- v4 vs v5 比較 -->
+        <div style="margin-top:10px;background:#fde8d8;border-radius:4px;padding:8px 10px;font-size:.75rem;">
+          <strong style="color:#9a3412;">📊 v4 vs v5 回収率の考え方</strong><br>
+          <strong>v4（的中率重視）:</strong> 人気馬を中心に予想 → 的中率89〜100% → 配当が低い → 回収率100%を超えにくい<br>
+          <strong>v5（回収率重視）:</strong> ◎の精度（100%）を単勝・馬連の軸に使いつつ、「☆穴ワイド」で高配当を狙う<br>
+          → <strong>ワイド穴が1点でも当たれば、他の買い目のマイナスを十分補える</strong>
+        </div>
+        <p style="margin-top:6px;font-size:.73rem;color:#7c2d12;">⚠️ v5では的中率は下がるが、<strong>期待値（EV）は上がる</strong>。単勝+ワイド安定で元を取り、穴ワイドで利益を出すイメージ。</p>
+      </div>
+
       <!-- コース実績ファクター -->
       <div style="background:#fdf4ff;border-left:4px solid #9333ea;border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:12px;font-size:.82rem;line-height:1.8;">
         <p style="font-weight:800;margin-bottom:6px;color:#581c87;">🏟️ コース実績ファクター（2026年 阪神芝2000m）</p>
