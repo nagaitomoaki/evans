@@ -3821,6 +3821,210 @@
       <p style="margin-top:14px;font-size:.75rem;color:var(--muted);">
         📌 枠順は2026年4月3日（金）9:00発表予定。v5モデル適用（回収率最大化版）。所属・騎手は確認分のみ記載。netkeiba・JRA公式・競馬ラボをもとに作成（2026年3月30日現在）。
       </p>
+
+      <!-- ══════════ 逆モデル ══════════ -->
+      <p style="font-size:.85rem;font-weight:800;color:var(--navy);margin-top:24px;margin-bottom:4px;">🚫 逆モデル（絶対来ない予想）× v5 統合スコアリング</p>
+      <p style="font-size:.74rem;color:var(--muted);margin-bottom:10px;">
+        「来る予想(v5)」と「来ない予想(逆モデル)」を掛け合わせ、<strong>両モデルが一致する馬の確信度を上げ・矛盾する馬を減額</strong>する。
+      </p>
+
+      <!-- 逆モデル: 消し確定条件 -->
+      <div style="background:#fef2f2;border-left:4px solid #dc2626;border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:12px;font-size:.82rem;line-height:1.8;">
+        <p style="font-weight:800;color:#991b1b;margin-bottom:6px;">🚫 逆モデル — 「絶対来ない」消し確定条件（バックテスト2017〜2025）</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.76rem;min-width:420px;">
+            <thead><tr style="background:#dc2626;color:#fff;"><th style="padding:4px 8px;">消し確定レベル</th><th style="padding:4px 8px;">条件</th><th style="padding:4px 8px;">根拠（9年データ）</th><th style="padding:4px 8px;">例外</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);background:#fee2e2;">
+                <td style="padding:4px 8px;font-weight:700;color:#b91c1c;">Lv.3 完全消し</td>
+                <td style="padding:4px 8px;">7歳以上 ＋ G1複数勝ちなし</td>
+                <td style="padding:4px 8px;">9年間でトップ5入りゼロ</td>
+                <td style="padding:4px 8px;color:#6b7280;">なし</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 8px;font-weight:700;color:#b91c1c;">Lv.3 完全消し</td>
+                <td style="padding:4px 8px;">6歳 ＋ 美浦 ＋ 関西重賞苦手（三重消し）</td>
+                <td style="padding:4px 8px;">9年間でトップ5入りゼロ</td>
+                <td style="padding:4px 8px;color:#6b7280;">なし</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fee2e2;">
+                <td style="padding:4px 8px;font-weight:700;color:#dc2626;">Lv.2 ほぼ消し</td>
+                <td style="padding:4px 8px;">美浦 ＋ 8番人気以下</td>
+                <td style="padding:4px 8px;">トップ5入り 1/9年（11%）</td>
+                <td style="padding:4px 8px;color:#6b7280;">2024ルージュ11番人気3着</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 8px;font-weight:700;color:#dc2626;">Lv.2 ほぼ消し</td>
+                <td style="padding:4px 8px;">前走10着以下 ＋ 消し条件1つ</td>
+                <td style="padding:4px 8px;">大敗後の巻き返し例なし</td>
+                <td style="padding:4px 8px;color:#6b7280;">なし</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fee2e2;">
+                <td style="padding:4px 8px;font-weight:700;color:#f97316;">Lv.1 注意</td>
+                <td style="padding:4px 8px;">1〜2枠 ＋ 追い込み脚質</td>
+                <td style="padding:4px 8px;">1着ゼロ・トップ3入り25%</td>
+                <td style="padding:4px 8px;color:#6b7280;">4〜5着はあり</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 8px;font-weight:700;color:#f97316;">Lv.1 注意</td>
+                <td style="padding:4px 8px;">1番人気 ＋ 消し条件2つ以上</td>
+                <td style="padding:4px 8px;">人気裏切りリスク大（波乱の元）</td>
+                <td style="padding:4px 8px;color:#6b7280;">3着以内 3/9年</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.73rem;color:#7f1d1d;margin-top:6px;">🔑 逆モデルの核心: <strong>「人気があっても条件が重なれば来ない」</strong> → 人気馬でも消し確定Lv.3なら馬連・ワイドから外せる → 点数削減 → 回収率向上</p>
+      </div>
+
+      <!-- 統合スコアリング定義 -->
+      <div style="background:#f0fdf4;border-left:4px solid #16a34a;border-radius:0 6px 6px 0;padding:12px 14px;margin-bottom:12px;font-size:.82rem;line-height:1.8;">
+        <p style="font-weight:800;color:#14532d;margin-bottom:6px;">🔀 統合スコアリング — v5（来る）× 逆モデル（来ない）</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.76rem;min-width:440px;">
+            <thead><tr style="background:#15803d;color:#fff;"><th style="padding:4px 8px;">v5判定</th><th style="padding:4px 8px;">逆モデル判定</th><th style="padding:4px 8px;">統合確信度</th><th style="padding:4px 8px;">買い目への反映</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);background:#dcfce7;">
+                <td style="padding:4px 8px;font-weight:700;">◎（最高評価）</td>
+                <td style="padding:4px 8px;font-weight:700;color:#15803d;">消し条件ゼロ</td>
+                <td style="padding:4px 8px;font-weight:900;color:#14532d;">★★★ 超高確信</td>
+                <td style="padding:4px 8px;color:#14532d;font-weight:700;">単勝・馬連の金額を1.5〜2倍に増額</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:4px 8px;font-weight:700;">○▲（高評価）</td>
+                <td style="padding:4px 8px;font-weight:700;color:#15803d;">消し条件ゼロ</td>
+                <td style="padding:4px 8px;font-weight:700;color:#166534;">★★☆ 高確信</td>
+                <td style="padding:4px 8px;">通常通り馬連・ワイド購入</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fef9c3;">
+                <td style="padding:4px 8px;font-weight:700;">△（軽視）</td>
+                <td style="padding:4px 8px;color:#15803d;">消し条件ゼロ</td>
+                <td style="padding:4px 8px;color:#854d0e;">★☆☆ 中確信</td>
+                <td style="padding:4px 8px;">ワイドのみ（逆モデルOKなので切らない）</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fef3c7;">
+                <td style="padding:4px 8px;font-weight:700;">☆穴（穴候補）</td>
+                <td style="padding:4px 8px;color:#b45309;">消し条件1〜2つ</td>
+                <td style="padding:4px 8px;color:#b45309;">☆ 低確信（穴のみ）</td>
+                <td style="padding:4px 8px;color:#b45309;">ワイド穴・3連複を少額のみ</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fee2e2;">
+                <td style="padding:4px 8px;font-weight:700;">△以下</td>
+                <td style="padding:4px 8px;font-weight:700;color:#b91c1c;">Lv.2〜3消し</td>
+                <td style="padding:4px 8px;font-weight:700;color:#991b1b;">✗ 除外</td>
+                <td style="padding:4px 8px;color:#991b1b;font-weight:700;">全買い目から除外 → 点数削減</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2026年 統合評価表 -->
+      <div style="background:#f8fafc;border:1px solid var(--border);border-radius:6px;padding:12px 14px;margin-bottom:12px;font-size:.82rem;">
+        <p style="font-weight:800;color:var(--navy);margin-bottom:8px;">📊 2026年大阪杯 — 統合評価（v5 × 逆モデル）</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.76rem;min-width:480px;">
+            <thead><tr style="background:var(--navy);color:#fff;"><th style="padding:5px 8px;">馬名</th><th style="padding:5px 8px;">v5印</th><th style="padding:5px 8px;">逆モデル</th><th style="padding:5px 8px;">統合確信度</th><th style="padding:5px 8px;">最終買い目指示</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);background:#dcfce7;">
+                <td style="padding:5px 8px;font-weight:700;">メイショウタバル</td>
+                <td style="padding:5px 8px;color:#cc0000;font-weight:900;font-size:.9rem;">◎</td>
+                <td style="padding:5px 8px;color:#15803d;font-weight:700;">消し条件ゼロ</td>
+                <td style="padding:5px 8px;font-weight:900;color:#14532d;">★★★ 超高確信</td>
+                <td style="padding:5px 8px;font-weight:700;color:#14532d;">単勝増額・全ワイド軸</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:5px 8px;font-weight:700;">ダノンデサイル</td>
+                <td style="padding:5px 8px;color:#0055aa;font-weight:900;font-size:.9rem;">○</td>
+                <td style="padding:5px 8px;color:#15803d;font-weight:700;">消し条件ゼロ</td>
+                <td style="padding:5px 8px;font-weight:700;color:#166534;">★★☆ 高確信</td>
+                <td style="padding:5px 8px;">馬連+ワイド安定（通常額）</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:5px 8px;font-weight:700;">ショウヘイ</td>
+                <td style="padding:5px 8px;color:#cc6600;font-weight:900;font-size:.9rem;">▲</td>
+                <td style="padding:5px 8px;color:#15803d;font-weight:700;">消し条件ゼロ</td>
+                <td style="padding:5px 8px;font-weight:700;color:#166534;">★★☆ 高確信</td>
+                <td style="padding:5px 8px;">馬連+ワイド安定（通常額）</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:5px 8px;font-weight:700;">クロワデュノール</td>
+                <td style="padding:5px 8px;color:#cc8800;font-weight:900;font-size:.9rem;">△</td>
+                <td style="padding:5px 8px;color:#15803d;">消し条件ゼロ <span style="color:#b45309;">（差し注意）</span></td>
+                <td style="padding:5px 8px;color:#854d0e;">★☆☆ 中確信</td>
+                <td style="padding:5px 8px;">ワイドのみ（馬連は外す）</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fff7ed;">
+                <td style="padding:5px 8px;font-weight:700;">レーベンスティール</td>
+                <td style="padding:5px 8px;color:#b45309;font-weight:900;font-size:.9rem;">☆</td>
+                <td style="padding:5px 8px;color:#b91c1c;font-weight:700;">Lv.2消し（6歳+美浦）</td>
+                <td style="padding:5px 8px;color:#b45309;">☆ 低確信（穴のみ）</td>
+                <td style="padding:5px 8px;color:#b45309;font-weight:700;">ワイド◎-☆ 少額のみ</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fff7ed;">
+                <td style="padding:5px 8px;font-weight:700;">ヨーホーレイク</td>
+                <td style="padding:5px 8px;color:#b45309;font-weight:900;font-size:.9rem;">☆</td>
+                <td style="padding:5px 8px;color:#b91c1c;font-weight:700;">Lv.2消し（8歳）</td>
+                <td style="padding:5px 8px;color:#b45309;">☆ 低確信（超穴のみ）</td>
+                <td style="padding:5px 8px;color:#7c3aed;font-weight:700;">3連複フォーメーション少額のみ</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);background:#fee2e2;opacity:.7;">
+                <td style="padding:5px 8px;">7歳馬 6頭<br><span style="font-size:.7rem;color:#6b7280;">デビットバローズ他</span></td>
+                <td style="padding:5px 8px;color:#aaa;font-size:.75rem;">消し</td>
+                <td style="padding:5px 8px;color:#b91c1c;font-weight:700;">Lv.3 完全消し</td>
+                <td style="padding:5px 8px;font-weight:700;color:#991b1b;">✗ 除外確定</td>
+                <td style="padding:5px 8px;color:#991b1b;font-weight:700;">全買い目から除外</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 統合最終買い目 -->
+      <div style="background:#1e3a5f;color:#fff;border-radius:8px;padding:14px;margin-bottom:16px;font-size:.82rem;">
+        <p style="font-weight:800;font-size:.88rem;margin-bottom:10px;">🏆 統合最終買い目（v5 × 逆モデル 確信度反映版）</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:.77rem;min-width:380px;">
+            <thead><tr style="background:#0f2440;"><th style="padding:5px 8px;color:#94a3b8;">種別</th><th style="padding:5px 8px;color:#94a3b8;">組み合わせ</th><th style="padding:5px 8px;color:#94a3b8;">金額目安</th><th style="padding:5px 8px;color:#94a3b8;">理由</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #2d4a6e;">
+                <td style="padding:5px 8px;font-weight:700;color:#34d399;">単勝</td>
+                <td style="padding:5px 8px;">◎メイショウタバル</td>
+                <td style="padding:5px 8px;color:#fbbf24;font-weight:700;">★★★増額</td>
+                <td style="padding:5px 8px;color:#d1fae5;">両モデル最高評価 → 確信度MAX</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2d4a6e;background:#162c44;">
+                <td style="padding:5px 8px;font-weight:700;color:#34d399;">馬連</td>
+                <td style="padding:5px 8px;">◎-○、◎-▲（2点）</td>
+                <td style="padding:5px 8px;color:#fbbf24;font-weight:700;">★★☆通常額</td>
+                <td style="padding:5px 8px;color:#d1fae5;">◎も相手も逆モデルOK → 高確信</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2d4a6e;">
+                <td style="padding:5px 8px;font-weight:700;color:#34d399;">ワイド安定</td>
+                <td style="padding:5px 8px;">◎-○、◎-▲、◎-△（3点）</td>
+                <td style="padding:5px 8px;color:#fbbf24;">★☆☆通常額</td>
+                <td style="padding:5px 8px;color:#d1fae5;">△クロワデュノールも逆モデルOK</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2d4a6e;background:#162c44;">
+                <td style="padding:5px 8px;font-weight:700;color:#fb923c;">ワイド穴★</td>
+                <td style="padding:5px 8px;">◎-☆レーベンスティール（1点）</td>
+                <td style="padding:5px 8px;color:#fb923c;font-weight:700;">少額（逆モデル警戒）</td>
+                <td style="padding:5px 8px;color:#fed7aa;">v5穴A型だが逆モデルLv.2消し → 減額</td>
+              </tr>
+              <tr style="border-bottom:1px solid #2d4a6e;">
+                <td style="padding:5px 8px;font-weight:700;color:#c084fc;">3連複穴</td>
+                <td style="padding:5px 8px;">◎○▲-☆ヨーホーレイク（3点）</td>
+                <td style="padding:5px 8px;color:#c084fc;">極少額</td>
+                <td style="padding:5px 8px;color:#e9d5ff;">超穴狙い。逆モデルLv.2消しで確率低</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:8px;background:#0f2440;border-radius:4px;padding:8px 10px;font-size:.74rem;color:#94a3b8;">
+          💡 <strong style="color:#e2e8f0;">合計9点・v5と同じ点数でも金額配分が変わる。</strong><br>
+          単勝増額で◎の確信を最大化。逆モデルが警戒する穴馬は金額を絞り、その分を単勝・馬連に回すことで<strong style="color:#fbbf24;">期待値（EV）をさらに向上</strong>させる。
+        </div>
+      </div>
     </div>
   </section>
   </div><!-- /tab-takamatsu -->
